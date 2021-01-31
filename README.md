@@ -1,7 +1,7 @@
 # Project Proposal  
 
 ## Domain of Interest: Cryptocurrency
-![alt text](https://media.giphy.com/media/MFabj1E9mgUsqwVWHu/giphy.gif)
+![Bitcoin gif](https://media.giphy.com/media/5C3Zrs5xUg5fHV4Kcf/giphy.gif)
 
 ### Why are we interested in this domain?
 
