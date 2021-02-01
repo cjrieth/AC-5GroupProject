@@ -4,6 +4,7 @@
 ![Bitcoin Image](bitcoin_image.jpg)
 
 ### Why are we interested in this domain?
+Cryptocurrency has become very popular over a rather small period of time. Because of its popularity, it is a new quickly evolving type of currency that could guide the financial markets in the future. From INFO 200, we also learned that people use cryptocurrency to buy goods from the dark web which was really interesting because the use of it is very hard to track. It is intriguing that it was started by computer scientists and was quickly manipulated by black market actors. There is also a huge influx of people our ages that are interested and investing their money in cryptocurrency. This is what fueled Bitcoin and the creation of so many other cryptocurrencies. It has not reached its full potential yet, and it might be interesting to predict how crypto might change. For example in Japan, they passed a law in 2017 that recognized Bitcoin as a legal tender. It means that it is mutually agreed that it has intrinsic value and it is a decentralized currency, so no single entity can control it, meaning it could potentially become a universal currency. Cryptocurrencies also link to computer hardware which market specifically graphical processing units.
 
 ### Examples of Relevant Data Driven Projects
 * [Analyzing Cryptocurrency Markets Using Python](https://github.com/triestpa/Cryptocurrency-Analysis-Python) aims to procure and leverage raw data to uncover the behavior of cryptocurrency values. The creators argue that much of the available information on cryptocurrency markets is speculative and lacks a strong quantitative foundation. Thus, they strive to create this foundation which they then use to analyze trends in the market.  
@@ -11,7 +12,7 @@
 * [Cryptoviz](https://github.com/Ameobea/cryptoviz) records and receives live order data from the Poloniex exchange using the Poloniex WebSocket API. It uses this data to create a visual that captures a high level of detail of the crypto market depth.   
 
 ### Data-Driven Questions
-* What year did the price of cryptocurrencies hit their _highest_? 
+* What year did the price of cryptocurrencies hit their _highest_?
 * What year did the price of cryptocurrencies hit their _lowest_?
 * What _events_ coincided with highest and lowest prices?
 * What day were the crypto markets the _most volatile_?
