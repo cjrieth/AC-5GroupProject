@@ -12,17 +12,42 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
 * [Cryptoviz](https://github.com/Ameobea/cryptoviz) records and receives live order data from the Poloniex exchange using the Poloniex WebSocket API. It uses this data to create a visual that captures a high level of detail of the crypto market depth.   
 
 ### Data-Driven Questions
-* What year did the price of cryptocurrencies hit their _highest_?
-* What year did the price of cryptocurrencies hit their _lowest_?
-* What _events_ coincided with highest and lowest prices?
-* What day were the crypto markets the _most volatile_?
-* Does the crypto market follow the _same_ trends as the stock market?
-* How has the introduction of _easier investment options_ (i.e. Robinhood) affected the value of crypto?
-* What _demographic_ buys the most crypto?
-* What are the _different uses_ of cryptocurrency by businesses versus individuals?
-* _How_ have COVID relief checks affected the trading of cryptocurrencies?
-    * If so, how _significant_ has the effect been?
-* What _external forces_ dictate how the price of cryptocurrencies change?
-* Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
+1. What year did the price of cryptocurrencies hit their _highest_?
+2. What year did the price of cryptocurrencies hit their _lowest_?
+3. What _events_ coincided with highest and lowest prices?
+4. What day were the crypto markets the _most volatile_?
+5. Does the crypto market follow the _same_ trends as the stock market?
+6. How has the introduction of _easier investment options_ (i.e. Robinhood) affected the value of crypto?
+7. What _demographic_ buys the most crypto?
+8. What are the _different uses_ of cryptocurrency by businesses versus individuals?
+9. _How_ have COVID relief checks affected the trading of cryptocurrencies?
+  * If so, how _significant_ has the effect been?
+10. What _external forces_ dictate how the price of cryptocurrencies change?
+11. Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
 
 ## Potential Data Sources
+* [Cryptocurrency Historical Prices API Documentation](https://financialmodelingprep.com/developer/docs/cryptocurrency-historical-data-api/#R) contains data on all of the major (and almost all of the minor) cryptocurrencies, including prices and dates. It also contains similar data for most of the stock market.
+  * Collection by Financial Modeling Prep developers
+  * Observations: 99
+  * Features: 13
+  * Relevant questions: 1, 2, 4, 5
+* [Top Cryptocurrencies Historical Prices](https://www.kaggle.com/sudalairajkumar/cryptocurrencypricehistory) provides data on the prices of major cryptocurrencies over the last.
+  * Collection by developer from Coin Market Cap
+  * Observations: 213
+  * Features: 7
+  * Relevant questions: 1, 2, 4, 10
+* [Yahoo Finance](https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD) provides data on the prices of all available individual cryptocurrencies.
+  * Collection by yahoo finance developers and yahoo AI
+  * Observations: 365
+  * Features: 7
+  * Relevant questions: 1, 2, 4, 8
+* [Computer Parts](https://www.kaggle.com/iliassekkaf/computerparts)
+  * Collection
+  * Observations:
+  * Features:  
+  * Relevant questions:
+* [Twitter API](https://developer.twitter.com/en/use-cases/listen-and-analyze)
+  * Collection
+  * Observations:
+  * Features:
+  * Relevant questions:
