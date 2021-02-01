@@ -21,9 +21,10 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
 7. What _demographic_ buys the most crypto?
 8. What are the _different uses_ of cryptocurrency by businesses versus individuals?
 9. _How_ have COVID relief checks affected the trading of cryptocurrencies?
-  * If so, how _significant_ has the effect been?
+  9. a. If so, how _significant_ has the effect been?
 10. What _external forces_ dictate how the price of cryptocurrencies change?
 11. Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
+12. How do _new releases_ of GPUs and CPUs affect the _price_ of crypto?
 
 ## Potential Data Sources
 * [Cryptocurrency Historical Prices API Documentation](https://financialmodelingprep.com/developer/docs/cryptocurrency-historical-data-api/#R) contains data on all of the major (and almost all of the minor) cryptocurrencies, including prices and dates. It also contains similar data for most of the stock market.
@@ -37,17 +38,17 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
   * Features: 7
   * Relevant questions: 1, 2, 4, 10
 * [Yahoo Finance](https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD) provides data on the prices of all available individual cryptocurrencies.
-  * Collection by yahoo finance developers and yahoo AI
+  * Collection by yahoo finance developers from yahoo AI used to collect data
   * Observations: 365
   * Features: 7
   * Relevant questions: 1, 2, 4, 8
-* [Computer Parts](https://www.kaggle.com/iliassekkaf/computerparts)
-  * Collection
-  * Observations:
-  * Features:  
-  * Relevant questions:
-* [Twitter API](https://developer.twitter.com/en/use-cases/listen-and-analyze)
-  * Collection
-  * Observations:
-  * Features:
-  * Relevant questions:
+* [Computer Parts](https://www.kaggle.com/iliassekkaf/computerparts) provides data on the release dates and prices of computer parts, specifically GPUs and CPUs; the parts used to mine crypto.
+  * Collection by developer from data available from Intel, Game-Debate, and other companies
+  * Observations: 3406
+  * Features: 34
+  * Relevant questions: 12
+* [User Tweet Timeline](https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/introduction) provides all tweets from a specified user.
+  * Collection by Twitter API developers from Twitter AI used to collect data
+  * Observations: Dependent upon specified user
+  * Features: Dependent upon specified user
+  * Relevant questions: 11
