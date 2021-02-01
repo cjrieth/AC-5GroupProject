@@ -21,7 +21,7 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
 7. What _demographic_ buys the most crypto?
 8. What are the _different uses_ of cryptocurrency by businesses versus individuals?
 9. _How_ have COVID relief checks affected the trading of cryptocurrencies?
-  9. a. If so, how _significant_ has the effect been?
+..* If so, how _significant_ has the effect been?
 10. What _external forces_ dictate how the price of cryptocurrencies change?
 11. Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
 
