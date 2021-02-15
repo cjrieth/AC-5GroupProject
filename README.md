@@ -22,8 +22,8 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
 8. What are the _different uses_ of cryptocurrency by businesses versus individuals?
 9. **_How_ have crypto prices changed over COVID lockdown periods?**
 10. What _external forces_ dictate how the price of cryptocurrencies change?
-11. **Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?**
-12. How do _new releases_ of GPUs and CPUs affect the _price_ of crypto?
+11. Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
+12. **How do _new releases_ of GPUs and CPUs affect the _price_ of crypto?**
 
 ## Potential Data Sources
 * [Cryptocurrency Historical Prices API Documentation](https://financialmodelingprep.com/developer/docs/cryptocurrency-historical-data-api/#R) contains data on all of the major (and almost all of the minor) cryptocurrencies, including prices and dates. It also contains similar data for most of the stock market.
