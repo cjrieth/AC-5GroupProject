@@ -15,14 +15,14 @@ Cryptocurrency has become very popular over a rather small period of time. Becau
 1. What year did the price of cryptocurrencies hit their _highest_?
 2. What year did the price of cryptocurrencies hit their _lowest_?
 3. What _events_ coincided with highest and lowest prices?
-4. What day were the crypto markets the _most volatile_?
+4. **Which day of the week is the most crypto bought and sold?**
 5. Does the crypto market follow the _same_ trends as the stock market?
 6. How has the introduction of _easier investment options_ (i.e. Robinhood) affected the value of crypto?
 7. What _demographic_ buys the most crypto?
 8. What are the _different uses_ of cryptocurrency by businesses versus individuals?
-9. _How_ have COVID relief checks affected the trading of cryptocurrencies? If so, how _significant_ has the effect been?
+9. **_How_ have crypto prices changed over COVID lockdwon periods?**
 10. What _external forces_ dictate how the price of cryptocurrencies change?
-11. Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?
+11. **Is there a _correlation_ between _tweets about crypto_ and a raise in the _price_ of specific cryptocurrencies?**
 12. How do _new releases_ of GPUs and CPUs affect the _price_ of crypto?
 
 ## Potential Data Sources
