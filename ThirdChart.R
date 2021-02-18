@@ -1,55 +1,56 @@
 library(tidyverse)
 library(GGally)
-bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv")
-dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/dash_price.csv")
-ethereum <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv")
-iota <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv")
+bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD.csv")
+dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/DASH-USD.csv")
+ethereum <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/ETH-USD.csv")
+iota <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/MIOTA-USD.csv")
 
 bitcoin_prices <- bitcoin %>%
-  mutate(bithigh = sum(High)) %>%
-  mutate(bitlow = sum(Low)) %>%
+  mutate(bithigh = High) %>%
   group_by(Date) %>%
-  select(Date, bithigh, bitlow)
+  select(Date, bithigh)
 
 dash_prices <- dash %>%
-  mutate(dashhigh = sum(High)) %>%
-  mutate(dashlow = sum(Low)) %>%
+  mutate(dashhigh = High) %>%
   group_by(Date) %>%
-  select(Date, dashhigh, dashlow)
+  select(Date, dashhigh)
 
 ethereum_prices <- ethereum %>%
-  mutate(ethhigh = sum(High)) %>%
-  mutate(ethlow = sum(Low)) %>%
+  mutate(ethhigh = High) %>%
   group_by(Date) %>%
-  select(Date, ethhigh, ethlow)
+  select(Date, ethhigh)
 
 iota_prices <- iota %>%
-  mutate(iotahigh = sum(High)) %>%
-  mutate(iotalow = sum(Low)) %>%
+  mutate(iotahigh = High) %>%
   group_by(Date) %>%
-  select(Date, iotahigh, iotalow)
+  select(Date, iotahigh)
 
-everything <- left_join(bitcoin_prices, dash_prices, ethereum_prices, iota_prices)
+bitdash <- left_join(bitcoin_prices, dash_prices)
+bitdasheth <- left_join(bitdash, ethereum_prices)
+everything <- left_join(bitdasheth, iota_prices)
 
-ggplot(data = bitcoin, aes(Date, High, Low)) +
+ggplot(data = everything, aes(Date, bithigh)) +
   geom_line(color = "blue",size = .3) +
   geom_point(color="blue") +
-  labs(title = "Bitcoin High Prices Over Time")
+  labs(title = "Bitcoin High Prices Over Time", x = "Date", y = "Price")
 
-ggplot(data = dash, aes(Date, High, Low)) +
+
+ggplot(data = everything, aes(Date, dashhigh)) +
   geom_line(color = "red",size = .3) +
   geom_point(color="red") +
-  labs(title = "Dash High Prices Over Time")
+  labs(title = "Dash High Prices Over Time", x = "Date", y = "Price")
 
-ggplot(data = ethereum, aes(Date, High, Low)) +
+ggplot(data = everything, aes(Date, ethhigh)) +
   geom_line(color = "purple",size = .3) +
   geom_point(color="purple") +
-  labs(title = "Ethereum High Prices Over Time")
+  labs(title = "Ethereum High Prices Over Time", x = "Date", y = "Price")
 
-ggplot(data = iota, aes(Date, High)) +
+ggplot(data = everything, aes(Date, iotahigh)) +
   geom_line(color = "green",size = .3) +
   geom_point(color="green") +
-  labs(title = "Iota High Prices Over Time")
+  labs(title = "Iota High Prices Over Time", x = "Date", y = "Price") + 
+  scale_x_continuous(breaks = seq(by = 12)) +
+  scale_y_continuous(breaks = seq(len = 10000))
 
 
 
