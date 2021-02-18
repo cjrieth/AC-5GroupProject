@@ -5,12 +5,14 @@ BTC_USD <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/
                     stringsAsFactors = F)
 
 BTC_USD <- BTC_USD %>% rename(Price = High)
+# fix this line: data <- data %>% replace(.== NULL, NA)
 
 # Data Set 2:
 GPUs <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv",
                  stringsAsFactors = F)
 
 GPUs <- GPUs %>% rename(Date = Release_Date, Price = Release_Price)
+
 # having trouble formatting dates for GPUs data set also data set is out of date 
 
 # Data Set 3:
@@ -45,14 +47,18 @@ iota_price$Date <- as.Date(iota_price$Date, format = "%b %d, %Y")
 get_summary_info <- function(data) {
   summary_info <- list()
   summary_info$features <- colnames(data)
-  summary_info$n_obs <- nrows(data)
-  summary_info$max_price <- 
-  
-  summary_info$date_max_price <- 
-    
-  summary_info$start_price <- 
-    
-  summary_info$date_start_price <- 
-    
+  summary_info$n_obs <- nrow(data)
+  summary_info$max_price <- data %>% 
+    filter(Price == max(Price, na.rm = T)) %>% 
+    select(Price)
+  summary_info$date_max_price <- data %>% 
+    filter(Price == max(Price, na.rm = T)) %>% 
+    select(Date)
+  summary_info$start_price <- data %>% 
+    filter(Date == min(Date, na.rm = T)) %>% 
+    select(Price)
+  summary_info$date_start_price <- data %>% 
+    filter(Date == min(Date, na.rm = T)) %>% 
+    select(Date)
   return(summary_info)
 }
