@@ -54,7 +54,7 @@ iotagraph <- ggplot(data = everything, aes(Date, iotahigh)) +
   geom_point(color="green") +
   labs(title = "Iota High Prices Over Time", x = "Date", y = "Price") 
 
-grid.arrange(bitcoingraph, dashgraph, ethereumgraph, iotagraph)
+third_chart <- grid.arrange(bitcoingraph, dashgraph, ethereumgraph, iotagraph)
 
 
 
