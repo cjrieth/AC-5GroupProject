@@ -5,15 +5,13 @@ BTC_USD <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/
                     stringsAsFactors = F)
 
 BTC_USD <- BTC_USD %>% rename(Price = High)
-# fix this line: data <- data %>% replace(.== NULL, NA)
+BTC_USD <- BTC_USD %>% replace(.== "null", NA)
 
 # Data Set 2:
 GPUs <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv",
                  stringsAsFactors = F)
 
-GPUs <- GPUs %>% rename(Date = Release_Date, Price = Release_Price)
-
-# having trouble formatting dates for GPUs data set also data set is out of date 
+# having trouble formatting dates for GPUs data set 
 
 # Data Set 3:
 bitcoin_price <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv",
@@ -43,7 +41,7 @@ iota_price <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProje
 iota_price <- iota_price %>% rename(Price = High)
 iota_price$Date <- as.Date(iota_price$Date, format = "%b %d, %Y")
 
-# Function to get summary information for each data set 
+# Function to get summary information for each data set (excluding GPUs)
 get_summary_info <- function(data) {
   summary_info <- list()
   summary_info$features <- colnames(data)
@@ -62,3 +60,21 @@ get_summary_info <- function(data) {
     select(Date)
   return(summary_info)
 }
+
+# Summary info for each data set 
+BTC_summary <- get_summary_info(BTC_USD)
+bitcoin_summary <- get_summary_info(bitcoin_price)
+ethereum_summary <- get_summary_info(ethereum_price)
+dash_summary <- get_summary_info(dash_price)
+iota_summary <- get_summary_info(iota_price)
+# code below doesn't get the right values but seems correct 
+GPU_summary <- list()
+GPU_summary$max_release_price <- GPUs %>% 
+  filter(Release_Price == max(Release_Price, na.rm = T)) %>% 
+  select(Release_Price)
+GPU_summary$max_price_release_date <- GPUs %>% 
+  filter(Release_Price == max(Release_Price, na.rm = T)) %>% 
+  select(Release_Date)
+GPU_summary$model_max_price <- GPUs %>% 
+  filter(Release_Price == max(Release_Price, na.rm = T)) %>% 
+  select(Architecture)
