@@ -1,6 +1,8 @@
 library(tidyverse)
 library(ggplot2)
 library(gridExtra)
+library(lintr)
+lintr::lint("ThirdChart.R")
 bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD.csv", na.strings = c("null"))
 dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/DASH-USD.csv", na.strings = c("null"))
 ethereum <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/ETH-USD.csv", na.strings = c("null"))
@@ -38,20 +40,16 @@ bitcoingraph <- ggplot(data = everything) +
   geom_point(mapping = aes(x = Date, y = bithigh)) + 
   labs(title = "Bitcoin High Prices Over Time", x = "Date", y = "Price", size = .1)
 
-
 dashgraph <- ggplot(data = everything, aes(Date, dashhigh)) +
-  geom_line(color = "red",size = .1) +
-  geom_point(color="red") +
+  geom_point(color = "red") +
   labs(title = "Dash High Prices Over Time", x = "Date", y = "Price")
 
 ethereumgraph <- ggplot(data = everything, aes(Date, ethhigh)) +
-  geom_line(color = "purple",size = .1) +
-  geom_point(color="purple") +
+  geom_point(color = "purple") +
   labs(title = "Ethereum High Prices Over Time", x = "Date", y = "Price")
 
 iotagraph <- ggplot(data = everything, aes(Date, iotahigh)) +
-  geom_line(color = "green",size = .1) +
-  geom_point(color="green") +
+  geom_point(color = "green") +
   labs(title = "Iota High Prices Over Time", x = "Date", y = "Price") 
 
 third_chart <- grid.arrange(bitcoingraph, dashgraph, ethereumgraph, iotagraph)
