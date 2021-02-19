@@ -8,21 +8,25 @@ iota <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/mai
 
 bitcoin_prices <- bitcoin %>%
   mutate(bithigh = High) %>%
+  mutate(Date = as.Date(Date)) %>%
   group_by(Date) %>%
   select(Date, bithigh)
 
 dash_prices <- dash %>%
   mutate(dashhigh = High) %>%
+  mutate(Date = as.Date(Date)) %>%
   group_by(Date) %>%
   select(Date, dashhigh)
 
 ethereum_prices <- ethereum %>%
   mutate(ethhigh = High) %>%
+  mutate(Date = as.Date(Date)) %>%
   group_by(Date) %>%
   select(Date, ethhigh)
 
 iota_prices <- iota %>%
   mutate(iotahigh = High) %>%
+  mutate(Date = as.Date(Date)) %>%
   group_by(Date) %>%
   select(Date, iotahigh)
 
@@ -30,38 +34,23 @@ bitdash <- left_join(bitcoin_prices, dash_prices)
 bitdasheth <- left_join(bitdash, ethereum_prices)
 everything <- left_join(bitdasheth, iota_prices)
 
-ggplot(data = everything) + 
-  geom_point(mapping = aes(x = Date, y = bithigh))
-  
-  
-  # labs(title = "Bitcoin High Prices Over Time", x = "Date", y = "Price") + 
-  # scale_x_date(scale_x_date(
-  #   name = waiver(),
-  #   breaks = waiver(),
-  #   date_breaks = waiver(),
-  #   labels = waiver(),
-  #   date_labels = waiver(),
-  #   minor_breaks = waiver(),
-  #   date_minor_breaks = waiver(),
-  #   limits = NULL,
-  #   expand = waiver(),
-  #   guide = waiver(),
-  #   position = "bottom",
-  #   sec.axis = waiver())) + 
-  # scale_y_discrete()
+bitcoingraph <- ggplot(data = everything) + 
+  geom_point(mapping = aes(x = Date, y = bithigh)) + 
+  labs(title = "Bitcoin High Prices Over Time", x = "Date", y = "Price", size = .1)
+
 
 dashgraph <- ggplot(data = everything, aes(Date, dashhigh)) +
-  geom_line(color = "red",size = .3) +
+  geom_line(color = "red",size = .1) +
   geom_point(color="red") +
   labs(title = "Dash High Prices Over Time", x = "Date", y = "Price")
 
 ethereumgraph <- ggplot(data = everything, aes(Date, ethhigh)) +
-  geom_line(color = "purple",size = .3) +
+  geom_line(color = "purple",size = .1) +
   geom_point(color="purple") +
   labs(title = "Ethereum High Prices Over Time", x = "Date", y = "Price")
 
 iotagraph <- ggplot(data = everything, aes(Date, iotahigh)) +
-  geom_line(color = "green",size = .3) +
+  geom_line(color = "green",size = .1) +
   geom_point(color="green") +
   labs(title = "Iota High Prices Over Time", x = "Date", y = "Price") 
 
