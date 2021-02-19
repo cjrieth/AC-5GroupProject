@@ -41,4 +41,6 @@ joined <- left_join(btc, gpus_f, by = "Date")
 
 joined <- joined %>%
   mutate(Date = as.Date(Date, "%Y-%m-%d")) %>%
+  filter(!is.na(num_gpus_released)) %>%
   arrange(Date)
+ 
