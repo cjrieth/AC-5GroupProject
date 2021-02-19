@@ -45,9 +45,7 @@ joined <- joined %>%
 released <- joined %>%
   filter(!is.na(num_gpus_released))
 
-gpu_btc_plot <- ggplot(joined, aes(x = Date, y = Close))
-
-gpu_btc_plot +
+gpu_btc_plot <- ggplot(joined, aes(x = Date, y = Close)) +
   geom_line() +
   geom_point(data = released, aes(colour = "Red")) +
   xlim(as.Date("2016-01-01", "%Y-%m-%d"), as.Date("2016-12-31", "%Y-%m-%d")) +
