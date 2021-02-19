@@ -8,8 +8,8 @@ btc <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main
   
 convert_date <- function(date) {
   split <- str_split(date, "-")
-  num <- switch(split[[1]][[2]], 
-         "Jan" = "01", 
+  num <- switch(split[[1]][[2]],
+         "Jan" = "01",
          "Feb" = "02",
          "Mar" = "03",
          "Apr" = "04",
@@ -18,9 +18,9 @@ convert_date <- function(date) {
          "Jul" = "07",
          "Aug" = "08",
          "Sep" = "09",
-         "Oct"= "10",
-         "Nov"= "11",
-         "Dec"= "12")
+         "Oct" = "10",
+         "Nov" = "11",
+         "Dec" = "12")
   return(paste(str_trim(split[[1]][[3]]), num, str_trim(split[[1]][[1]]), sep = "-"))
 }
 
