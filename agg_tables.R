@@ -42,15 +42,3 @@ joined <- left_join(btc, gpus_f, by = "Date")
 joined <- joined %>%
   mutate(Date = as.Date(Date, "%Y-%m-%d")) %>%
   arrange(Date)
-
-released <- joined %>%
-  filter(!is.na(num_gpus_released))
-
-plot <- ggplot(joined, aes(x = Date, y = Close))
-
-plot +
-  geom_line() +
-  geom_point(data = released, aes(colour = factor(num_gpus_released))) +
-  xlim(as.Date("2016-01-01", "%Y-%m-%d"), as.Date("2016-12-31", "%Y-%m-%d")) +
-  ylim(0, 1000) +
-  labs(color = "Number of new GPUs released", y = "Close Price")
