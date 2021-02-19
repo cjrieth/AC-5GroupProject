@@ -1,17 +1,20 @@
+# summary info
 library(tidyverse)
 
 # Data Set 1:
 BTC_USD <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv",
-                    stringsAsFactors = F)
+                    stringsAsFactors = F, na.strings = "null")
+
 
 BTC_USD <- BTC_USD %>% rename(Price = High)
-BTC_USD <- BTC_USD %>% replace(.== "null", NA)
 
 # Data Set 2:
 GPUs <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv",
                  stringsAsFactors = F)
 
-# having trouble formatting dates for GPUs data set 
+GPUs$Release_Price <- as.numeric(gsub("\\$", "", GPUs$Release_Price))
+GPUs$Release_Date <- gsub("\\\n", "", GPUs$Release_Date)
+GPUs$Release_Date <- as.Date(GPUs$Release_Date, format = "%d-%b-%Y")
 
 # Data Set 3:
 bitcoin_price <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv",
