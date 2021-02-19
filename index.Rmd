@@ -11,6 +11,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Cryptocurrency is a decentralized, virtual medium of exchange that has become very popular over a rather small period of time. It relies on the participation of users in the blockchain network. These users, or rather their computers, solve complicated mathematical algorithms in order to validate blocks to acquire some share of a crypto coin. Due to the security provided by validating transactions and using a sequential blockchain, this quickly evolving type of currency could guide financial markets in the future. Originally cryptocurrency, namely Bitcoin, was heavily used in black market transactions due to the difficulty of tracing it back to an individual user. It is intriguing that it was started by computer scientists and was quickly manipulated by black market actors. There is also a huge influx of younger people between the ages of 16 and 25 that are investing their money in cryptocurrency. This has helped fuel Bitcoin and spark the creation of so many other cryptocurrencies. Recently the sharp rise in the price of Bitcoin has only furthered the intrigue surrounding crypto, however many still believe tt has not reached its full potential yet. Analyzing past trends and external factors may allow us to predict the behavior of crypto. Moreover, the price of cryptocurrencies is linked to the price of computer hardware such as graphical processing units so anlaysis may also help to deduce the impact of new hardware on the price of crypto. 
 
+## Summary of Data Sets 
+```{r, echo = FALSE, message = FALSE}
+source("summary_info.R")
+```
+This report draws on six different data sets. 
+
+
+ `r BTC_summary$features`
+
+
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r cars}
