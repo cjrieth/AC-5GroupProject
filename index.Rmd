@@ -15,17 +15,21 @@ Cryptocurrency is a decentralized, virtual medium of exchange that has become ve
 ```{r, echo = FALSE, message = FALSE}
 source("summary_info.R")
 ```
-This report draws on six different data sets. 
+This report draws on six different data sets. Five of the data sets represent financial information and are thus similar in nature. The other data set consists of various information associated with different models of graphical processing units. To gain a better understanding and appreciation of each data set we found summary values that are of interest to us as creators. The data sets and their summary values are described below. 
 
+[**Bitcoin Prices (Yahoo Finance)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv)
 
- `r BTC_summary$features`
+`r BTC_summary$features`
 
+[**Bitcoin Prices (Kaggle)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+[**Ethereum Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv)
 
-```{r cars}
-summary(cars)
-```
+[**Dash Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv)
+
+[**Iota Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv)
+
+[**GPU Releases**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv)
 
 ## Including Plots
 
@@ -36,3 +40,4 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+

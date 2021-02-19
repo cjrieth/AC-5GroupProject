@@ -70,7 +70,6 @@ bitcoin_summary <- get_summary_info(bitcoin_price)
 ethereum_summary <- get_summary_info(ethereum_price)
 dash_summary <- get_summary_info(dash_price)
 iota_summary <- get_summary_info(iota_price)
-# code below doesn't get the right values but seems correct 
 GPU_summary <- list()
 GPU_summary$max_release_price <- GPUs %>% 
   filter(Release_Price == max(Release_Price, na.rm = T)) %>% 
