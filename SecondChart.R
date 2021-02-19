@@ -46,7 +46,7 @@ btcsunf <- sum(btcsun$V1, na.rm = TRUE)
 btcbar <- c(btcmonf/10000000000, btctuesf/10000000000, btcwedf/10000000000,
             btcthurf/10000000000, btcfrif/10000000000, btcsatf/10000000000, 
             btcsunf/10000000000)
-barplot(btcbar,
+secondchart <- barplot(btcbar,
 main = "Bitcoin Trading by Day of the Week From 2018",
 ylab = "Number of Shares Traded",
 names.arg = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"),
