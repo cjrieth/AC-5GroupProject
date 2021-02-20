@@ -43,7 +43,10 @@ This data set has `r iota_summary$n_cols` features with the following names: `r 
 
 This data set contains information outside the scope of this report. It has `r GPU_summary$n_cols` features and `r GPU_summary$n_obs` individual observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date was for the model `r GPU_summary$model_max_price`, released at a price of `r paste("$", format(round(as.numeric(GPU_summary$max_release_price), 1), nsmall=1, big.mark=","), sep = "")` on `r GPU_summary$max_price_release_date`. 
 
-## Aggregate Table 
+## Close Price of Bitcoin and New Releases of GPUs  
+
+The table below gives a record of the number of releases of new GPUs and the price of Bitcoin (the column named close) at the date of each release. 
+
 ```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
 library(knitr)
 source("agg_tables.R")
@@ -61,7 +64,7 @@ This chart is meant to explore how new releases of Graphical Processing Units, o
 The chart provides some interesting insights into the relationship between GPU release and Bitcoin price. There are points on the graph where a new release of a GPU is followed by a quick jump in Bitcoin price, as seen in May and June of 2016. Additionally, there are also points where a new GPU causes Bitcoin price to fall sharply, as seen in August of 2016. Generally a dot indicating a new GPU release on the graph is followed by a dramatic change in Bitcoin price, indicating that there may be some correlation between the two.
 
 ## Bitcoin Trading and Days of the Week 
-```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+```{r, fig.align = 'center', results = 'hide', fig.keep = 'all', echo = FALSE, message = FALSE, warning = FALSE}
 source("SecondChart.R")
 secondchart
 ```
@@ -69,7 +72,7 @@ secondchart
 This graph is a representation of how much people trade bitcoin as it relates to the day of the week. The variable along the y axis is the number of shares traded since January 1, 2018. We included this chart because with the growing popularity of cryptocurrency, it may reveal an interesting difference in what we might expect. For one, we were surprised that Tuesdays and Thursdays are the most common day for trading. I would have guessed Monday, after people get their paychecks from the week. Another interesting point is how actively people are trading on weekends. Due to its ties to the stock market, we predicted that people would not be tradin much over the weekend because the market is closed. These trends stretched across both bitcoin and ethereum.
 
 ## Cryptocurrencies Prices in the Past Year 
-```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+```{r, fig.align = 'center', results = 'hide', fig.keep = 'all', echo = FALSE, message = FALSE, warning = FALSE}
 source("ThirdChart.R")
 third_chart
 ```
