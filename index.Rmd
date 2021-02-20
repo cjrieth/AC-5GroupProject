@@ -15,29 +15,62 @@ Cryptocurrency is a decentralized, virtual medium of exchange that has become ve
 ```{r, echo = FALSE, message = FALSE}
 source("summary_info.R")
 ```
+
 This report draws on six different data sets. Five of the data sets represent financial information and are thus similar in nature. The other data set consists of various information associated with different models of graphical processing units. To gain a better understanding and appreciation of each data set we found summary values that are of interest to us as creators. The data sets and their summary values are described below. 
 
 [**Bitcoin Prices (Yahoo Finance)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv)
 
-`r BTC_summary$features`
+This data set has `r BTC_summary$n_cols` features with the following names: `r BTC_summary$features`. It also has `r BTC_summary$n_obs` individual observations. The data tells us that the price of Bitcoin started at `r paste("$", format(round(as.numeric(BTC_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r BTC_summary$date_start_price` and reached a maximum price of `r paste("$", format(round(as.numeric(BTC_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r BTC_summary$date_max_price`. 
 
 [**Bitcoin Prices (Kaggle)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv)
 
+This data set has `r bitcoin_summary$n_cols` features with the following names: `r bitcoin_summary$features`. It also has `r bitcoin_summary$n_obs` individual observations. The data tells us that the price of Bitcoin started at `r paste("$", format(round(as.numeric(bitcoin_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r bitcoin_summary$date_start_price` and reached a maximum price of `r paste("$", format(round(as.numeric(bitcoin_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r bitcoin_summary$date_max_price`. 
+
 [**Ethereum Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv)
+
+This data set has `r ethereum_summary$n_cols` features with the following names: `r ethereum_summary$features`. It also has `r ethereum_summary$n_obs` individual observations. The data tells us that the price of Ethereum started at `r paste("$", format(round(as.numeric(ethereum_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r ethereum_summary$date_start_price` and reached a maximum price of `r paste("$", format(round(as.numeric(ethereum_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r ethereum_summary$date_max_price`. 
 
 [**Dash Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv)
 
+This data set has `r dash_summary$n_cols` features with the following names: `r dash_summary$features`. It also has `r dash_summary$n_obs` individual observations. The data tells us that the price of Dash started at `r paste("$", format(round(as.numeric(dash_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r dash_summary$date_start_price` and reached a maximum price of `r paste("$", format(round(as.numeric(dash_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r dash_summary$date_max_price`. 
+
 [**Iota Prices**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv)
+
+This data set has `r iota_summary$n_cols` features with the following names: `r iota_summary$features`. It also has `r iota_summary$n_obs` individual observations. The data tells us that the price of Iota started at `r paste("$", format(round(as.numeric(iota_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r iota_summary$date_start_price` and reached a maximum price of `r paste("$", format(round(as.numeric(iota_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r iota_summary$date_max_price`. 
 
 [**GPU Releases**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv)
 
-## Including Plots
+This data set contains information outside the scope of this report. It has `r GPU_summary$n_cols` features and `r GPU_summary$n_obs` individual observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date was for the model `r GPU_summary$model_max_price`, released at a price of `r paste("$", format(round(as.numeric(GPU_summary$max_release_price), 1), nsmall=1, big.mark=","), sep = "")` on `r GPU_summary$max_price_release_date`. 
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+## Aggregate Table 
+```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+library(knitr)
+source("agg_tables.R")
+kable(joined) 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## GPU Releases and Bitcoin Price 
+```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+source("gpu_btc_chart.R")
+gpu_btc_plot 
+```
 
+This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of Bitcoin. Bitcoin is created by mining it with a computer, so the more computing power you have the more bitcoin you can gain. This means that Bitcoin miners are always quick to pick up the latest and greatest GPUs on the market, as they are more powerful than older versions and therefore better at mining crypto. There may be some correlation between the release of a new GPU and the price of Bitcoin upon its release.
+
+The chart provides some interesting insights into the relationship between GPU release and Bitcoin price. There are points on the graph where a new release of a GPU is followed by a quick jump in Bitcoin price, as seen in May and June of 2016. Additionally, there are also points where a new GPU causes Bitcoin price to fall sharply, as seen in August of 2016. Generally a dot indicating a new GPU release on the graph is followed by a dramatic change in Bitcoin price, indicating that there may be some correlation between the two.
+
+## Bitcoin Trading and Days of the Week 
+```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+source("SecondChart.R")
+secondchart
+```
+
+This graph is a representation of how much people trade bitcoin as it relates to the day of the week. The variable along the y axis is the number of shares traded since January 1, 2018. We included this chart because with the growing popularity of cryptocurrency, it may reveal an interesting difference in what we might expect. For one, we were surprised that Tuesdays and Thursdays are the most common day for trading. I would have guessed Monday, after people get their paychecks from the week. Another interesting point is how actively people are trading on weekends. Due to its ties to the stock market, we predicted that people would not be tradin much over the weekend because the market is closed. These trends stretched across both bitcoin and ethereum.
+
+## Cryptocurrencies Prices in the Past Year 
+```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
+source("ThirdChart.R")
+third_chart
+```
+
+These graphs show the prices of Bitcoin, Dash, Ethereum, and Iota cryptocurrencies over this past year during the COVID Lockdown period. For all of these cryptocurrencies, the graphs show that the price has skyrocketed in these past few months as it is graphed for price versus time. The purpose of this chart is to show the trend of prices during COVID, it helps to understand the increase in popularity of mining and trading for cryptocurrencies.

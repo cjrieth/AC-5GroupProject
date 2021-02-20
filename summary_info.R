@@ -48,6 +48,7 @@ iota_price$Date <- as.Date(iota_price$Date, format = "%b %d, %Y")
 get_summary_info <- function(data) {
   summary_info <- list()
   summary_info$features <- colnames(data)
+  summary_info$n_cols <- ncol(data)
   summary_info$n_obs <- nrow(data)
   summary_info$max_price <- data %>% 
     filter(Price == max(Price, na.rm = T)) %>% 
@@ -71,6 +72,8 @@ ethereum_summary <- get_summary_info(ethereum_price)
 dash_summary <- get_summary_info(dash_price)
 iota_summary <- get_summary_info(iota_price)
 GPU_summary <- list()
+GPU_summary$n_cols <- ncol(GPUs)
+GPU_summary$n_obs <- nrow(GPUs)
 GPU_summary$max_release_price <- GPUs %>% 
   filter(Release_Price == max(Release_Price, na.rm = T)) %>% 
   select(Release_Price)
