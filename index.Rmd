@@ -45,7 +45,7 @@ This data set contains information outside the scope of this report. It has `r g
 
 ## Close Price of Bitcoin and New Releases of GPUs  
 
-The table below gives a record of the number of releases of new GPUs and the price of Bitcoin (the column named close) at the date of each release. 
+The table below gives a record of the number of releases of new GPUs and the close price of Bitcoin at the date of each release. 
 
 ```{r, fig.align = 'center', echo = FALSE, message = FALSE, warning = FALSE}
 library(knitr)
