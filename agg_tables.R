@@ -43,6 +43,6 @@ joined <- joined %>%
   mutate(Date = as.Date(Date, "%Y-%m-%d")) %>%
   mutate(Close = floor(Close)) %>%
   filter(!is.na(num_gpus_released)) %>%
-  rename("Nuber of GPUs Released" = num_gpus_released) %>%
+  rename("Number of GPUs Released" = num_gpus_released) %>%
   rename("Close Price" = Close) %>%
   arrange(Date)

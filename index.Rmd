@@ -21,7 +21,7 @@ This report draws on six different data sets. Five of the data sets represent fi
 
 [**Bitcoin Prices (Yahoo Finance)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv)
 
-This data set has `r BTC_summary$n_cols` features with the following names: `r BTC_summary$features`. It also has `r BTC_summary$n_obs` individual observations. The data tells us that the price of Bitcoin started at `r paste("$", format(round(as.numeric(BTC_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as.Date(unlist(BTC_summary$date_start_price)), format = "%B %d, %Y")` and reached a maximum price of `r paste("$", format(round(as.numeric(BTC_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as.Date(unlist(BTC_summary$date_max_price)), format = "%B %d, %Y")`. 
+This data set has `r btc_summary$n_cols` features with the following names: `r btc_summary$features`. It also has `r btc_summary$n_obs` individual observations. The data tells us that the price of Bitcoin started at `r paste("$", format(round(as.numeric(btc_summary$start_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as.Date(unlist(btc_summary$date_start_price)), format = "%B %d, %Y")` and reached a maximum price of `r paste("$", format(round(as.numeric(btc_summary$max_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as.Date(unlist(btc_summary$date_max_price)), format = "%B %d, %Y")`. 
 
 [**Bitcoin Prices (Kaggle)**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv)
 
@@ -41,7 +41,7 @@ This data set has `r iota_summary$n_cols` features with the following names: `r 
 
 [**GPU Releases**](https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv)
 
-This data set contains information outside the scope of this report. It has `r GPU_summary$n_cols` features and `r GPU_summary$n_obs` individual observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date was for the model `r GPU_summary$model_max_price`, released at a price of `r paste("$", format(round(as.numeric(GPU_summary$max_release_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as_date(unlist(GPU_summary$max_price_release_date)), format = "%B %d, %Y")`. 
+This data set contains information outside the scope of this report. It has `r gpu_summary$n_cols` features and `r gpu_summary$n_obs` individual observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date was for the model `r gpu_summary$model_max_price`, released at a price of `r paste("$", format(round(as.numeric(gpu_summary$max_release_price), 1), nsmall=1, big.mark=","), sep = "")` on `r format(as_date(unlist(gpu_summary$max_price_release_date)), format = "%B %d, %Y")`. 
 
 ## Close Price of Bitcoin and New Releases of GPUs  
 
