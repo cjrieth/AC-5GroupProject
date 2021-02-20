@@ -14,6 +14,7 @@ Cryptocurrency is a decentralized, virtual medium of exchange that has become ve
 ## Summary of Data Sets 
 ```{r, echo = FALSE, message = FALSE}
 source("summary_info.R")
+# fix dates 
 ```
 
 This report draws on six different data sets. Five of the data sets represent financial information and are thus similar in nature. The other data set consists of various information associated with different models of graphical processing units. To gain a better understanding and appreciation of each data set we found summary values that are of interest to us as creators. The data sets and their summary values are described below. 
