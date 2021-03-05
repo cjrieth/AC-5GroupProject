@@ -3,7 +3,7 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(stringr)
-
+##test
 gpus <- read.csv("~/Desktop/Info201/AC-5GroupProject/data/gpu-cpu-history-kaggle/All_GPUs.csv")
 btc <- read.csv("~/Desktop/Info201/AC-5GroupProject/data/BTC-USD-5Y.csv", na.strings = c("null"))
   
@@ -43,6 +43,6 @@ joined <- joined %>%
   mutate(Date = as.Date(Date, "%Y-%m-%d")) %>%
   mutate(Close = floor(Close)) %>%
   filter(!is.na(num_gpus_released)) %>%
-  rename("Nuber of GPUs Released" = num_gpus_released) %>%
+  rename("Number of GPUs Released" = num_gpus_released) %>%
   rename("Close Price" = Close) %>%
   arrange(Date)
