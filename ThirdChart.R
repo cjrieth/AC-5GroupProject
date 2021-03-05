@@ -2,6 +2,7 @@ library(tidyverse)
 library(ggplot2)
 library(gridExtra)
 library(lintr)
+#omnom
 lintr::lint("ThirdChart.R")
 bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD.csv", na.strings = c("null"))
 dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/DASH-USD.csv", na.strings = c("null"))
