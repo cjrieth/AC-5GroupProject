@@ -49,7 +49,7 @@ iota_price <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProje
 iota_price <- iota_price %>% rename(Price = High)
 iota_price$Date <- as.Date(iota_price$Date, format = "%b %d, %Y")
 
-# Function to get summary information for each data set (excluding GPUs)
+# Function to get summary information for each data set (not including GPUs)
 get_summary_info <- function(data) {
   summary_info <- list()
   summary_info$features <- colnames(data)
