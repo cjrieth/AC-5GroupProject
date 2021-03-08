@@ -1,9 +1,6 @@
-library(ggplot2)
-library(dplyr)
-library(lintr)
-library(shiny)
-library(stringr)
+# Server 
 
+# Define server 
 server <- function(input, output) {
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
