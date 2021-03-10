@@ -52,47 +52,21 @@ bitdash <- left_join(bitcoin_prices, dash_prices)
 bitdasheth <- left_join(bitdash, ethereum_prices)
 everything <- left_join(bitdasheth, iota_prices)
 
-bitcoingraph <- ggplot(data = everything) + 
-  geom_point(mapping = aes(x = Date, y = bithigh)) + 
-  labs(title = "Bitcoin High Prices Over Time", x = "Date", y = "Price", size = .1)
-
-dashgraph <- ggplot(data = everything, aes(Date, dashhigh)) +
-  geom_point(color = "red") +
-  labs(title = "Dash High Prices Over Time", x = "Date", y = "Price")
-
-ethereumgraph <- ggplot(data = everything, aes(Date, ethhigh)) +
-  geom_point(color = "purple") +
-  labs(title = "Ethereum High Prices Over Time", x = "Date", y = "Price")
-
-iotagraph <- ggplot(data = everything, aes(Date, iotahigh)) +
-  geom_point(color = "green") +
-  labs(title = "Iota High Prices Over Time", x = "Date", y = "Price") 
-
-third_chart <- grid.arrange(bitcoingraph, dashgraph, ethereumgraph, iotagraph)
-
-
-
-
-
 
 server <- function(input, output) {
   output$crypto_vs_time <- renderPlotly({
     plot <- everything %>%
-      filter(crypto == input$choose_crypto) %>%
-      filter(type_data == input$choose_data)
+      select(switch(input$choose_data, "High" = switch(input$choose_crypto, "Bitcoin" = bithigh, "Ethereum" = ethhigh, "Dash" = dashhigh, "Iota" = iotahigh),
+                    "Low" = switch(input$choose_crypto, "Bitcoin" = bitlow, "Ethereum" = ethlow, "Dash" = dashlow, "Iota" = iotalow),
+                    "Open" = switch(input$choose_crypto, "Bitcoin" = bitopen, "Ethereum" = ethopen, "Dash" = dashopen, "Iota" = iotaopen),
+                    "Close" = switch(input$choose_crypto, "Bitcoin" = bitclose, "Ethereum" = ethclose, "Dash" = dashclose, "Iota" = iotaclose),
+                    "Volume" = switch(input$choose_crypto, "Bitcoin" = bitvol, "Ethereum" = ethvol, "Dash" = dashvol, "Iota" = iotavol),
+      ))
     ggplot(plot) +
       geom_point(mapping = aes(x =  Date, y = )) +
       labs(title = "Something", 
            x = "blub", y = "bleh")
   })
-  output$oil_v_time <- renderPlotly({
-    plot <- data %>%
-      filter(country == input$something) %>%
-    ggplot(plot) +
-      geom_point(mapping = aes(x =  year, y = )) +
-      labs(title = "Something", 
-           x = "blub", y = "bleh")
-    })
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
