@@ -1,5 +1,10 @@
 # User interface 
-
+library(dplyr)
+library(lintr)
+library(shiny)
+library(ggplot2)
+library(plotly)
+source("app_server.R")
 # Introduction page 
 intro_panel <- tabPanel(
   "Purpose",
@@ -29,6 +34,32 @@ intro_panel <- tabPanel(
     of new hardware on the price of crypto."
   )
 )
+
+gpu_page <- tabPanel(
+    "GPU Releases and Crypto Price",
+    sidebarLayout(
+      sidebarPanel(
+        selectInput(
+          inputId = "gpu_crypto",
+          label = "Cryptocurrency",
+          choices =  c("Bitcoin", "Ethereum", "Dash")
+        )
+      ),
+      mainPanel(
+        plotlyOutput(
+          outputId = "gpu",
+          HTML("<br/>"),
+          p("This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of a cryptocurrency.
+          Crytpto is created by mining it with a computer, so the more computing power you have the more bitcoin you can gain. 
+          This means that crypto miners are always quick to pick up the latest and greatest GPUs on the market, as they are more powerful than older versions and therefore better at mining crypto. 
+          There may be some correlation between the release of a new GPU and the price of a crypto  upon its release.")
+        )
+      )
+    )
+)
+  
+  
+page_three <-
   
 choose_crypto <- selectInput(inputId = "choose_crypto",
                              label = h3("Choose a Cryptocurrency"),
@@ -45,24 +76,6 @@ page_one <- tabPanel(
       plotlyOutput("crypto_vs_time"),
       p("blub"),
     )))
-
-gpu_page <- tabPanel(
-    "GPU Releases and Crypto Price",
-    sidebarLayout(
-      sidebarPanel(
-        selectInput(
-          inputId = "gpu_crypto",
-          label = "Cryptocurrency",
-          choices =  c("Bitcoin", "Ethereum", "Dash")
-        )
-      ),
-      mainPanel(
-        plotlyOutput(
-          outputId = "gpu"
-        )
-      )
-    )
-)
   
 page_three <- tabPanel(
   "Trading by Day"
@@ -71,7 +84,7 @@ page_three <- tabPanel(
 summary <- tabPanel(
   "Conclusions"
 )
-  
+
 ui <- navbarPage("Cryptocurrency Analysis",
                  intro_panel,
                  page_one,

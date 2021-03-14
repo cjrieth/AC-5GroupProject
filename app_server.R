@@ -1,4 +1,9 @@
 # Server 
+library(ggplot2)
+library(dplyr)
+library(lintr)
+library(shiny)
+library(stringr)
 
 # Define server 
 server <- function(input, output) {
