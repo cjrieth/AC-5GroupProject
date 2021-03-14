@@ -65,6 +65,9 @@ server <- function(input, output) {
                     "Volume" = switch(input$choose_crypto, "Bitcoin" = bitvol, "Ethereum" = ethvol, "Dash" = dashvol, "Iota" = iotavol),
       ))
     ggplot(plot) +
+        if (length(input$choose_data) == 0) return(everything)
+        everything %>% dplyr::select(!!!input$choose_data)
+      }, rownames = TRUE)
       geom_point(mapping = aes(x =  Date, y = )) +
       labs(title = "Something", 
            x = "blub", y = "bleh")
