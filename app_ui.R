@@ -22,7 +22,12 @@ gpu_page <- tabPanel(
       ),
       mainPanel(
         plotlyOutput(
-          outputId = "gpu"
+          outputId = "gpu",
+          HTML("<br/>"),
+          p("This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of a cryptocurrency.
+          Crytpto is created by mining it with a computer, so the more computing power you have the more bitcoin you can gain. 
+          This means that crypto miners are always quick to pick up the latest and greatest GPUs on the market, as they are more powerful than older versions and therefore better at mining crypto. 
+          There may be some correlation between the release of a new GPU and the price of a crypto  upon its release.")
         )
       )
     )
