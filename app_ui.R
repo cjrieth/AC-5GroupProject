@@ -69,7 +69,7 @@ page_one <- tabPanel(
     )))
 
 btc_or_eth <- selectInput(inputId = "btc_or_eth",
-                          label = h3("CHoose a Cryptocurrency"),
+                          label = h3("Choose a Cryptocurrency"),
                           choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar"))  
 
 
