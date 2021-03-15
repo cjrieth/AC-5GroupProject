@@ -65,7 +65,10 @@ page_one <- tabPanel(
       choose_crypto, choose_data),
     mainPanel(
       plotlyOutput("crypto_vs_time"),
-      p("blub"),
+      p("This chart explores the data from four different cryptocurrencies: Bitcoin,
+        Dash, Ethereum, and Iota. The user can choose to see how the high, low, open,
+        close, and volume prices differ over this past year during the pandemic and how 
+        the prices have changed due to quarantining."),
     )))
 
 btc_or_eth <- selectInput(inputId = "btc_or_eth",
