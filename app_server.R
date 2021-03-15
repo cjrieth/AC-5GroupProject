@@ -4,9 +4,74 @@ library(dplyr)
 library(lintr)
 library(shiny)
 library(stringr)
+bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD.csv", na.strings = c("null"))
+dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/DASH-USD.csv", na.strings = c("null"))
+ethereum <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/ETH-USD3YR.csv", na.strings = c("null"))
+iota <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/MIOTA-USD.csv", na.strings = c("null"))
+
+bitcoin_prices <- bitcoin %>%
+  mutate(bithigh = High) %>%
+  mutate(bitlow = Low) %>%
+  mutate(bitopen = Open) %>%
+  mutate(bitclose = Close) %>%
+  mutate(bitvol = Volume) %>%
+  mutate(Date = as.Date(Date)) %>%
+  group_by(Date) %>%
+  select(Date, bithigh, bitlow, bitopen, bitclose, bitvol)
+
+dash_prices <- dash %>%
+  mutate(dashhigh = High) %>%
+  mutate(dashlow = Low) %>%
+  mutate(dashopen = Open) %>%
+  mutate(dashclose = Close) %>%
+  mutate(dashvol = Volume) %>%
+  mutate(Date = as.Date(Date)) %>%
+  group_by(Date) %>%
+  select(Date, dashhigh, dashlow, dashopen, dashclose, dashvol)
+
+ethereum_prices <- ethereum %>%
+  mutate(ethhigh = High) %>%
+  mutate(ethlow = Low) %>%
+  mutate(ethopen = Open) %>%
+  mutate(ethclose = Close) %>%
+  mutate(ethvol = Volume) %>%
+  mutate(Date = as.Date(Date)) %>%
+  group_by(Date) %>%
+  select(Date, ethhigh, ethlow, ethopen, ethclose, ethvol)
+
+iota_prices <- iota %>%
+  mutate(iotahigh = High) %>%
+  mutate(iotalow = Low) %>%
+  mutate(iotaopen = Open) %>%
+  mutate(iotaclose = Close) %>%
+  mutate(iotavol = Volume) %>%
+  mutate(Date = as.Date(Date)) %>%
+  group_by(Date) %>%
+  select(Date, iotahigh, iotalow, iotaopen, iotaclose, iotavol)
+
+bitdash <- left_join(bitcoin_prices, dash_prices)
+bitdasheth <- left_join(bitdash, ethereum_prices)
+everything <- left_join(bitdasheth, iota_prices)
+
 
 # Define server 
 server <- function(input, output) {
+  output$crypto_vs_time <- renderPlotly({
+    plot <- everything %>%
+      select(switch(input$choose_data, "High" = switch(input$choose_crypto, "Bitcoin" = bithigh, "Ethereum" = ethhigh, "Dash" = dashhigh, "Iota" = iotahigh),
+                    "Low" = switch(input$choose_crypto, "Bitcoin" = bitlow, "Ethereum" = ethlow, "Dash" = dashlow, "Iota" = iotalow),
+                    "Open" = switch(input$choose_crypto, "Bitcoin" = bitopen, "Ethereum" = ethopen, "Dash" = dashopen, "Iota" = iotaopen),
+                    "Close" = switch(input$choose_crypto, "Bitcoin" = bitclose, "Ethereum" = ethclose, "Dash" = dashclose, "Iota" = iotaclose),
+                    "Volume" = switch(input$choose_crypto, "Bitcoin" = bitvol, "Ethereum" = ethvol, "Dash" = dashvol, "Iota" = iotavol),
+      ))
+    ggplot(plot) +
+        if (length(input$choose_data) == 0) return(everything)
+        everything %>% dplyr::select(!!!input$choose_data)
+      }, rownames = TRUE)
+      geom_point(mapping = aes(x =  Date, y = )) +
+      labs(title = "Something", 
+           x = "blub", y = "bleh")
+  })
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))

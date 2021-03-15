@@ -46,26 +46,18 @@ gpu_page <- tabPanel(
         )
       ),
       mainPanel(
-        plotlyOutput(
-          outputId = "gpu",
-          HTML("<br>"),
-          p("This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of a cryptocurrency.
-          Crytpto is created by mining it with a computer, so the more computing power you have the more bitcoin you can gain. 
-          This means that crypto miners are always quick to pick up the latest and greatest GPUs on the market, as they are more powerful than older versions and therefore better at mining crypto. 
-          There may be some correlation between the release of a new GPU and the price of a crypto  upon its release.")
-        )
+        plotlyOutput(outputId = "gpu"),
+        p("This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of a cryptocurrency. Crytpto is created by mining it with a computer, so the more computing power you have the more bitcoin you can gain. This means that crypto miners are always quick to pick up the latest and greatest GPUs on the market, as they are more powerful than older versions and therefore better at mining crypto. There may be some correlation between the release of a new GPU and the price of a crypto upon its release.")
       )
     )
 )
-  
-  
   
 choose_crypto <- selectInput(inputId = "choose_crypto",
                              label = h3("Choose a Cryptocurrency"),
                              choices = "Bitcoin", "Dash", "Ethereum", "Iota")
 
 choose_data <- selectInput("choose_data", label = h3("Choose a Type of Data"),
-                           choices = "High", "Low", "Open", "Close", "Volume")  
+                           choices = "High", "Low", "Open", "Close", "Volume")
 
 page_one <- tabPanel(
   "Cryptocurrency Prices During the Pandemic", sidebarLayout(
@@ -79,6 +71,7 @@ page_one <- tabPanel(
 btc_or_eth <- selectInput(inputId = "btc_or_eth",
                           label = h3("CHoose a Cryptocurrency"),
                           choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar"))  
+
 
 page_three <- tabPanel(
   "Trading by Day", sidebarLayout(
