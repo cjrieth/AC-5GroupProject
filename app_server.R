@@ -1,3 +1,4 @@
+# Server 
 library(ggplot2)
 library(dplyr)
 library(lintr)
@@ -53,6 +54,7 @@ bitdasheth <- left_join(bitdash, ethereum_prices)
 everything <- left_join(bitdasheth, iota_prices)
 
 
+# Define server 
 server <- function(input, output) {
   output$crypto_vs_time <- renderPlotly({
     plot <- everything %>%
@@ -77,7 +79,6 @@ server <- function(input, output) {
                                bitvol, ethvol, dashvol, iotavol)) +
       labs(title = "Something",
            x = "blub", y = "bleh")
-  }
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
@@ -132,4 +133,23 @@ server <- function(input, output) {
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
+
+  source("SecondChart.R")
+  reactive_weekday_data <- reactive(
+    bar_data_app <- bardatafinal %>% pull(input$btc_or_eth),
+    return(bar_data_app)
+  )
+  
+  bar_color <- c("red", "coral2","orange","yellow","brown","green","cyan",
+             "blue4", "blue", "purple")
+  
+  output$weekday <- renderPlotly({
+    barplot_pg3 <- plot_ly(x = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"), y = ~reactive_weekday_data(),
+                           marker = list(color = bar_color))
+    barplot_pg3 <- barplot_pg3 %>% layout(
+      title = "Crytocurrency Trading by Day of the Week from 2018",
+      yaxis = list(title = "Number of Shares Traded")
+    )
+  })
+}
 
