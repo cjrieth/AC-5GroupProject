@@ -56,6 +56,12 @@ everything <- left_join(bitdasheth, iota_prices)
 server <- function(input, output) {
   output$crypto_vs_time <- renderPlotly({
     plot <- everything %>%
+  #     filter(crypto == input$choose_crypto)
+  #   ggplot(plot) +
+  #     geom_point(mapping = aes(x =  Date, y = )) +
+  #     labs(title = "Price of Cryptocurrency Over the Past Year", 
+  #          x = "Date", y = "Price")
+  # })
       select(switch(input$choose_data, "High" = switch(input$choose_crypto, "Bitcoin" = bithigh, "Ethereum" = ethhigh, "Dash" = dashhigh, "Iota" = iotahigh),
                     "Low" = switch(input$choose_crypto, "Bitcoin" = bitlow, "Ethereum" = ethlow, "Dash" = dashlow, "Iota" = iotalow),
                     "Open" = switch(input$choose_crypto, "Bitcoin" = bitopen, "Ethereum" = ethopen, "Dash" = dashopen, "Iota" = iotaopen),
@@ -66,10 +72,12 @@ server <- function(input, output) {
         if (length(input$choose_data) == 0) return(everything)
         everything %>% dplyr::select(!!!input$choose_data)
       }, rownames = TRUE)
-      geom_point(mapping = aes(x =  Date, y = )) +
-      labs(title = "Something", 
+      geom_point(mapping = aes(x =  Date, y = bithigh, ethhigh, dashhigh, iotahigh, bitlow, ethlow, dashlow, iotalow,
+                               bitopen, ethopen, dashopen, iotaopen, bitclose, ethclose, dashclose, iotaclose,
+                               bitvol, ethvol, dashvol, iotavol)) +
+      labs(title = "Something",
            x = "blub", y = "bleh")
-  })
+  }
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
@@ -124,4 +132,4 @@ server <- function(input, output) {
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
-}
+
