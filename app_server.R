@@ -67,7 +67,7 @@ server <- function(input, output) {
       select(Date, new)
     done <- ggplot(plot, aes(x = Date, y = new)) +
       geom_point() +
-      labs(title = paste0("Price of ", input$choose_crypto ," Over the Past Year"),
+      labs(title = paste0(input$choose_data, " " , ifelse(input$choose_data == "Volume", "of ", "Price of "), input$choose_crypto, " " , "Over the Past Year"),
            x = "Date", y = ifelse(input$choose_data == "Volume", "Volume", "Price"))
     done
   })
