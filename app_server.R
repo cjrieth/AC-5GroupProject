@@ -58,24 +58,19 @@ everything <- left_join(bitdasheth, iota_prices)
 server <- function(input, output) {
   output$crypto_vs_time <- renderPlotly({
     plot <- everything %>%
-  #     filter(crypto == input$choose_crypto)
-  #   ggplot(plot) +
-  #     geom_point(mapping = aes(x =  Date, y = )) +
-  #     labs(title = "Price of Cryptocurrency Over the Past Year", 
-  #          x = "Date", y = "Price")
-  # })
-      select(switch(input$choose_data, "High" = switch(input$choose_crypto, "Bitcoin" = bithigh, "Ethereum" = ethhigh, "Dash" = dashhigh, "Iota" = iotahigh),
-                    "Low" = switch(input$choose_crypto, "Bitcoin" = bitlow, "Ethereum" = ethlow, "Dash" = dashlow, "Iota" = iotalow),
-                    "Open" = switch(input$choose_crypto, "Bitcoin" = bitopen, "Ethereum" = ethopen, "Dash" = dashopen, "Iota" = iotaopen),
-                    "Close" = switch(input$choose_crypto, "Bitcoin" = bitclose, "Ethereum" = ethclose, "Dash" = dashclose, "Iota" = iotaclose),
-                    "Volume" = switch(input$choose_crypto, "Bitcoin" = bitvol, "Ethereum" = ethvol, "Dash" = dashvol, "Iota" = iotavol),
-      ))
-    ggplot(plot) +
-      geom_point(mapping = aes(x =  Date, y = bithigh, ethhigh, dashhigh, iotahigh, bitlow, ethlow, dashlow, iotalow,
-                               bitopen, ethopen, dashopen, iotaopen, bitclose, ethclose, dashclose, iotaclose,
-                               bitvol, ethvol, dashvol, iotavol)) +
-      labs(title = "Price of Cryptocurrency Over the Past Year",
-           x = "Date", y = "Prices")
+      rename(new = switch(input$choose_data, "High" = switch(input$choose_crypto, "Bitcoin" = "bithigh", "Ethereum" = "ethhigh", "Dash" = "dashhigh", "Iota" = "iotahigh"),
+                    "Low" = switch(input$choose_crypto, "Bitcoin" = "bitlow", "Ethereum" = "ethlow", "Dash" = "dashlow", "Iota" = "iotalow"),
+                    "Open" = switch(input$choose_crypto, "Bitcoin" = "bitopen", "Ethereum" = "ethopen", "Dash" = "dashopen", "Iota" = "iotaopen"),
+                    "Close" = switch(input$choose_crypto, "Bitcoin" = "bitclose", "Ethereum" = "ethclose", "Dash" = "dashclose", "Iota" = "iotaclose"),
+                    "Volume" = switch(input$choose_crypto, "Bitcoin" = "bitvol", "Ethereum" = "ethvol", "Dash" = "dashvol", "Iota" = "iotavol")
+      )) %>%
+      select(Date, new)
+    done <- ggplot(plot, aes(x = Date, y = new)) +
+      geom_point() +
+      labs(title = paste0("Price of ", input$choose_crypto ," Over the Past Year"),
+           x = "Date", y = ifelse(input$choose_data == "Volume", "Volume", "Price"))
+    done
+  })
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
@@ -123,30 +118,29 @@ server <- function(input, output) {
     
     gpu_btc_plot <- ggplot(joined, aes(x = Date, y = Close)) +
       geom_line() +
-      geom_point(data = released, aes(colour = factor(released$Name), text = paste0("GPU Name: ", released$Name))) +
+      geom_point(data = released, aes(colour = factor(released$Name), text = paste0("GPU Name: ", released$Name)), show.legend = F) +
       xlim(as.Date("2016-01-01", "%Y-%m-%d"), as.Date("2016-12-31", "%Y-%m-%d")) +
       ylim(0, 1000) +
-      labs(color = "New GPU Released", y = "Close Price (USD)", title = paste0("Overlay of New GPU Releases with ", input$gpu_crypto, " Price"))
+      labs(color = "New GPU Released", y = "Close Price (USD)", title = paste0("Overlay of New GPU Releases with ", input$gpu_crypto, " Price")) +
+      theme(legend.position = "none")
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
-
-  source("SecondChart.R")
-  reactive_weekday_data <- reactive(
-    bar_data_app <- bardatafinal %>% pull(input$btc_or_eth),
-    return(bar_data_app)
-  )
-  
-  bar_color <- c("red", "coral2","orange","yellow","brown","green","cyan",
-             "blue4", "blue", "purple")
-  
   output$weekday <- renderPlotly({
-    barplot_pg3 <- plot_ly(x = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"), y = ~reactive_weekday_data(),
-                           marker = list(color = bar_color))
+    source("SecondChart.R")
+    xform <- list(categoryorder = "array",
+                  categoryarray = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"))
+    bar_data_app <- bardatafinal %>% pull(input$btc_or_eth)
+    bar_color <- c("red", "coral2","orange","yellow","brown","green","cyan",
+                   "blue4", "blue", "purple")
+    barplot_pg3 <- plot_ly(x = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"), y = bar_data_app,
+                           marker = list(color = bar_color), type = "bar")
     barplot_pg3 <- barplot_pg3 %>% layout(
-      title = "Crytocurrency Trading by Day of the Week from 2018",
-      yaxis = list(title = "Number of Shares Traded")
+      title = paste0("Average ", ifelse(input$btc_or_eth == "btcbar", "Bitcoin", "Ethereum"), " Trading by Day of the Week in 2018"),
+      yaxis = list(title = "Number of Shares Traded"),
+      xaxis  = xform
     )
+    barplot_pg3
   })
-})}
+}
 
