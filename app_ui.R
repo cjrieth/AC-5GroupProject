@@ -84,7 +84,7 @@ page_three <- tabPanel(
     mainPanel(
       plotlyOutput(
         outputId = "weekday",
-        p("2nd chart test")
+        p("This chart shows the days of the week where the highest number of shares are traded for two different cryptocurrencies. The user can choose between Bitcoin and Ethereum and see a comparison of shares being traded on each day of the week.")
       )
     )
   )
