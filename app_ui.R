@@ -51,7 +51,7 @@ gpu_page <- tabPanel(
       )
     )
 )
-
+  
 choose_crypto <- selectInput(inputId = "choose_crypto",
                              label = h3("Choose a Cryptocurrency"),
                              choices = "Bitcoin", "Dash", "Ethereum", "Iota")
@@ -67,8 +67,24 @@ page_one <- tabPanel(
       plotlyOutput("crypto_vs_time"),
       p("blub"),
     )))
+
+btc_or_eth <- selectInput(inputId = "btc_or_eth",
+                          label = h3("CHoose a Cryptocurrency"),
+                          choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar"))  
+
+
 page_three <- tabPanel(
-  "Trading by Day"
+  "Trading by Day", sidebarLayout(
+    sibebarPanel(
+      btc_or_eth
+    ), 
+    mainPanel(
+      plotlyOutput(
+        outputId = "weekday",
+        p("2nd chart test")
+      )
+    )
+  )
 )
   
 summary <- tabPanel(
