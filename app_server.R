@@ -61,4 +61,21 @@ server <- function(input, output) {
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
+  source("SecondChart.R")
+  reactive_weekday_data <- reactive(
+    bar_data_app <- bardatafinal %>% pull(input$btc_or_eth),
+    return(bar_data_app)
+  )
+  
+  bar_color <- c("red", "coral2","orange","yellow","brown","green","cyan",
+             "blue4", "blue", "purple")
+  
+  output$weekday <- renderPlotly({
+    barplot_pg3 <- plot_ly(x = c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"), y = ~reactive_weekday_data(),
+                           marker = list(color = bar_color))
+    barplot_pg3 <- barplot_pg3 %>% layout(
+      title = "Crytocurrency Trading by Day of the Week from 2018",
+      yaxis = list(title = "Number of Shares Traded")
+    )
+  })
 }
