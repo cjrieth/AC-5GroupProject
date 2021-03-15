@@ -71,7 +71,6 @@ server <- function(input, output) {
       geom_point(mapping = aes(x =  Date, y = )) +
       labs(title = "Something", 
            x = "blub", y = "bleh")
-  })
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
