@@ -293,23 +293,11 @@ summary <- tabPanel(
     its price begins to increase due to higher demand and diminishing supply."
   ) %>% tagAppendAttributes(class = "content"),
   p(
-    "Dash and Ethereum were initially included due to the prominence of
+    "Dash and Ethereum were also included due to the prominence of
     their current mining
-    networks. We originally thought that there would be a more significant
-    relationship between
-    the release of new GPUs and their prices, however this does not appear
-    to be the case.
-    It appears that between 2016 and 2017 the release of new GPUs had little
-    to no impact on
-    the price of Dash and Ethereum. Upon reflection, this is a limitation of
-    the time span
-    of the GPU data set. Ethereum and Dash were not as popular as Bitcoin
-    until more recently.
-    Nevertheless, this still provides some insight. The lack of relationship
-    between GPUs and
-    the price of Ethereum and Dash as recently as 2017 just reinforces how
-    quickly crypto has
-    gained recognition and wide spread popularity."
+    networks. Similarly to Bitcoin, Dash and Ethereum prices, while much smaller, seem to be affected by new GPU releases.
+    It is possible to find spots on their graphs where the price sharply falls or rises after a GPU release, further solidifying the
+    trends we observed from the more popular Bitcoin."
   ) %>% tagAppendAttributes(class = "content"),
   h1("Which day of the week is the most crypto bought and sold?") %>% tagAppendAttributes(class = "content"),
   p(

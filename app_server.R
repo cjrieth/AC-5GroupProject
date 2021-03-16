@@ -141,7 +141,7 @@ server <- function(input, output) {
         show.legend = F
       ) +
       xlim(as.Date("2016-01-01", "%Y-%m-%d"), as.Date("2016-12-31", "%Y-%m-%d")) +
-      ylim(0, 1000) +
+      ylim(c(0, ifelse(input$gpu_crypto == "Bitcoin", 1000, 25))) +
       labs(
         color = "New GPU Released", y = "Close Price (USD)",
         title = paste0("Overlay of New GPU Releases with ", input$gpu_crypto, " Price")
@@ -150,7 +150,7 @@ server <- function(input, output) {
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
-
+  
   output$weekday <- renderPlotly({
     source("SecondChart.R")
     xform <- list(
