@@ -1,6 +1,6 @@
-# User interface 
+# User interface
 
-# Introduction page 
+# Introduction page
 intro_panel <- tabPanel(
   "Purpose",
   tags$head(
@@ -19,7 +19,7 @@ intro_panel <- tabPanel(
         background-color: white;  
       }"))
   ),
-  h1("Cryptocurrency:", em("What"), " is it and ", em("Why"), " it matters?"), 
+  h1("Cryptocurrency:", em("What"), " is it and ", em("Why"), " it matters?"),
   p(
     "Cryptocurrency is a decentralized, virtual medium of exchange
     that has become very popular over a rather short period of time.
@@ -28,165 +28,321 @@ intro_panel <- tabPanel(
     algorithms in order to validate blocks to acquire a fraction of a crypto
     coin. Due to the security provided by validating transactions and using
     a sequential blockchain, this quickly evolving type of currency could
-    guide financial markets in the future. Thus it is becoming increasingly more 
-    important to analyze and understand the behvior of cryptocurrencies. Originally 
-    cryptocurrency, namely Bitcoin, was heavily used in black market transactions 
-    due to the difficulty of tracing it back to an individual user. It is intriguing
-    that it was started by computer scientists and was quickly manipulated by black 
-    market actors. There is also a huge influx of younger people between the ages of
-    16 and 25 that are investing their money in cryptocurrency. This has helped
-    fuel Bitcoin and spark the creation of so many other cryptocurrencies.
-    Recently the sharp rise in the price of Bitcoin has only furthered the
-    intrigue surrounding crypto, however many still believe it has not reached
-    its full potential yet."
+    guide financial markets in the future. Thus it is becoming increasingly
+    more important to analyze and understand the behvior of cryptocurrencies.
+    Originally cryptocurrency, namely Bitcoin, was heavily used in black market
+    transactions due to the difficulty of tracing it back to an individual user.
+    It is intriguing that it was started by computer scientists and was quickly
+    manipulated by black market actors. There is also a huge influx of younger
+    people between the ages of 16 and 25 that are investing their money in
+    cryptocurrency. This has helped fuel Bitcoin and spark the creation of so
+    many other cryptocurrencies. Recently the sharp rise in the price of Bitcoin
+    has only furthered the intrigue surrounding crypto, however many still
+    believe it has not reached its full potential yet."
   ),
   h1("Aims of Exploration"),
   tags$p(
-    "Analyzing past trends and external factors that impact the behavior of crypto
-    currency may allow us to better predict the performance and prominence of crypto
-    in the future. This exploratory prjoect aims to answer three major questions."
-    ),
+    "Analyzing past trends and external factors that impact the
+    behavior of crypto currency may allow us to better predict the
+    performance and prominence of crypto in the future. This exploratory
+    prjoect aims to answer three major questions."
+  ),
   tags$ol(
-    tags$li(strong("How have crypto prices changed over COVID lockdown periods?")),
-    tags$li(strong("How do new releases of GPUs and CPUs affect the price of crypto?")),
-    tags$li(strong("Which day of the week is the most crypto bought and sold?"))
+    tags$li(
+      strong("How have crypto prices changed over COVID lockdown periods?")
+      ),
+    tags$li(
+      strong("How do new releases of GPUs affect the price of crypto?")
+      ),
+    tags$li(
+      strong("Which day of the week is the most crypto bought and sold?")
+      )
   ),
   p(
-   "The hype surrounding cryptocurrencies has increased rather dramatically in the midst
-   of the COVID pandemic. More people are stuck at home with more free time to spend on
-   activities that can be done in isolation, such as taking an interest in the financial
-   market and trading stock. Thus we thought it would be interesting to track the prices
-   of four different crypto currencies since the start of the pandemic in an attempt to
-   answer the first question. Moreover, it is a known fact that the price of cryptocurrencies
-   is linked to the price of computer hardware such as graphical processing units so anlaysis
-   between their respective prices may help to deduce the impact of new hardware on the price
-   of crypto. Lastly, we wanted to gain some insight into the behavior of the people 
-   participating in the cryptocurency market. As previously mentioned there has been a 
-   large surge in the number of young adults participating in crypto investment and trading.
-   One could hypothesize that, because of this, crypto is traded more frequently on the
-   weekends as a more whimsical activity."
-    ),
+    "The hype surrounding cryptocurrencies has increased rather
+    dramatically in the midst of the COVID pandemic. More people
+    are stuck at home with more
+    free time to spend on activities that can be done in isolation,
+    such as taking
+    an interest in the financial market and trading stock. Thus we
+    thought it would
+    be interesting to track the prices of four different crypto
+    currencies since the
+    start of the pandemic in an attempt to answer the first question.
+    Moreover, it is
+    a known fact that the price of cryptocurrencies is linked to the
+    price of computer
+    hardware such as graphical processing units so anlaysis between
+    their respective
+    prices may help to deduce the impact of new hardware on the price
+    of crypto. Lastly, we wanted to gain some insight into the behavior
+    of the people
+    participating in the cryptocurency market. As previously mentioned
+    there has been a
+    large surge in the number of young adults participating in crypto
+    investment and
+    trading. One could hypothesize that, because of this, crypto is
+    traded more
+    frequently on the weekends as a more whimsical activity."
+  ),
   h1("Relevant Data Sets"),
   p(
-    "This project draws on six different data sets. Five of the data sets represent
-    financial information and are thus similar in nature. The other data set consists
-    of various information associated with different models of graphical processing units.
-    To gain a better understanding and appreciation of each data set we found summary values
-    that are of interest to us as creators. The data sets are breifly described below."
-    ),
+    "This project draws on six different data sets. Five of the data
+    sets represent
+    financial information and are thus similar in nature. The other
+    data set consists
+    of various information associated with different models of
+    graphical processing
+    units. To gain a better understanding and appreciation of
+    each data set we found
+    summary values that are of interest to us as creators.
+    The data sets are breifly
+    described below."
+  ),
   p(
     a("Bitcoin Prices (Yahoo Finance)",
-    href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv"),
-    "has 7 features with the following names: Date, Open, Price, Low, Close, Adj.Close,
-    Volume. It also has 367 individual observations. This data tells us that the price of Bitcoin
-    started at $9,521.7 on January 31, 2020."
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv"
     ),
+    "has 7 features with the following names: Date, Open, Price, Low, Close,
+    Adj.Close, Volume. It also has 367 individual observations. This data tells
+    us that the price
+    of Bitcoin started at $9,521.7 on January 31, 2020."
+  ),
   p(
     a("Bitcoin Prices (Kaggle)",
-      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv"),
-    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
-    It also has 1760 individual observations. The data tells us that the price of Bitcoin started at $136.0 on 
-    pril 28, 2013."
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv"
     ),
+    "has 7 features with the following names: Date, Open, Price, Low,
+    Close, Volume,
+    Market.Cap. It also has 1760 individual observations.
+    The data tells us that the
+    price of Bitcoin started at $136.0 on April 28, 2013."
+  ),
   p(
     a("Ethereum Prices",
-      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv"),
-    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
-    It also has 929 individual observations. The data tells us that the price of Ethereum started at $3.5 on
-    August 07, 2015."
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv"
     ),
+    "has 7 features with the following names: Date, Open, Price, Low,
+    Close, Volume,
+    Market.Cap. It also has 929 individual observations. The data
+    tells us that the
+    price of Ethereum started at $3.5 on August 07, 2015."
+  ),
   p(
     a("Dash Prices",
-      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"),
-    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
-    It also has 1468 individual observations. The data tells us that the price of Dash started at $0.4 on
-    February 14, 2014."
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"
     ),
+    "has 7 features with the following names: Date, Open, Price, Low,
+    Close, Volume,
+    Market.Cap. It also has 1468 individual observations. The data
+    tells us that the
+    price of Dash started at $0.4 on February 14, 2014."
+  ),
   p(
     a("Iota Prices",
-      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"),
-    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
-    It also has 253 individual observations. The data tells us that the price of Iota started at $0.7 on June
-    13, 2017"
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"
     ),
+    "has 7 features with the following names: Date, Open, Price, Low,
+    Close, Volume,
+    Market.Cap. It also has 253 individual observations. The data tells
+    us that the
+    price of Iota started at $0.7 on June 13, 2017"
+  ),
   p(
     a("GPU Releases",
-      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv"),
-    "contains information outside the scope of this report. It has 34 features and 3406 individual
-    observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date
-    was for the model Fermi GF100 (x2) , released at a price of $14,999.0 on July 25, 2011."
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv"
+    ),
+    "contains information outside the scope of this report. It has 34
+    features and 3406
+    individual observations. Information we found pertinent is as
+    follows. The highest
+    price of a GPU unpon its release date was for the model Fermi
+    GF100 (x2) , released
+    at a price of $14,999.0 on July 25, 2011."
   )
 )
 
-# GPU and crypto prices page 
+# GPU and crypto prices page
 gpu_page <- tabPanel(
-    "GPU Releases and Crypto Price",
-    sidebarLayout(
-      sidebarPanel(
-        selectInput(
-          inputId = "gpu_crypto",
-          label = h3("Choose a Cryptocurrency"),
-          choices =  c("Bitcoin", "Ethereum", "Dash")
-        )
-      ),
-      mainPanel(
-        plotlyOutput(outputId = "gpu"),
-        p("This chart is meant to explore how new releases of Graphical Processing
+  "GPU Releases and Crypto Price",
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "gpu_crypto",
+        label = h3("Choose a Cryptocurrency"),
+        choices = c("Bitcoin", "Ethereum", "Dash")
+      )
+    ),
+    mainPanel(
+      plotlyOutput(outputId = "gpu"),
+      p("This chart is meant to explore how new releases of Graphical Processing
           Units, or GPUs, might affect the price of a cryptocurrency. Hover over
           the points on the graph to see which GPU was released on that day.")
-      )
     )
+  )
 )
 
-# Crypto during the pandemic page 
+# Crypto during the pandemic page
 page_one <- tabPanel(
   "Cryptocurrency Prices During the Pandemic", sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "choose_crypto",
-                  label = h3("Choose a Cryptocurrency"),
-                  choices = c("Bitcoin", "Dash", "Ethereum", "Iota")), 
-      selectInput("choose_data", label = h3("Choose a Type of Data"),
-                  choices = c("High", "Low", "Open", "Close", "Volume"))),
+      selectInput(
+        inputId = "choose_crypto",
+        label = h3("Choose a Cryptocurrency"),
+        choices = c("Bitcoin", "Dash", "Ethereum", "Iota")
+      ),
+      selectInput("choose_data",
+        label = h3("Choose a Type of Data"),
+        choices = c("High", "Low", "Open", "Close", "Volume")
+      )
+    ),
     mainPanel(
       plotlyOutput("crypto_vs_time"),
-      p("This chart explores the data from four different cryptocurrencies: Bitcoin,
-        Dash, Ethereum, and Iota. The user can choose to see how the high, low, open,
-        close, and volume prices differ over this past year during the pandemic and how 
+      p("This chart explores the data from four different cryptocurrencies:
+      Bitcoin,
+        Dash, Ethereum, and Iota. The user can choose to see how the high,
+        low, open,
+        close, and volume prices differ over this past year during the
+        pandemic and how
         the prices have changed due to quarantining."),
-    )))
+    )
+  )
+)
 
-# Widget for trading by day 
-btc_or_eth <- selectInput(inputId = "btc_or_eth",
-                          label = h3("Choose a Cryptocurrency"),
-                          choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar"))  
+# Widget for trading by day
+btc_or_eth <- selectInput(
+  inputId = "btc_or_eth",
+  label = h3("Choose a Cryptocurrency"),
+  choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar")
+)
 
-# Trading by day of the week page 
+# Trading by day of the week page
 page_three <- tabPanel(
   "Trading by Day", sidebarLayout(
     sidebarPanel(
       btc_or_eth
-    ), 
+    ),
     mainPanel(
       plotlyOutput(
-        outputId = "weekday"),
-        p("This chart shows the average number of crypto shares that are traded
+        outputId = "weekday"
+      ),
+      p("This chart shows the average number of crypto shares that are traded
           on each days of the week in 2018. The user can choose between Bitcoin
           and Ethereum and see a comparison of shares being traded on each day
           of the week.")
     )
   )
 )
-  
+
+# Conclusions and summary page
 summary <- tabPanel(
-  "Conclusions"
+  "Conclusions",
+  h1("How have crypto prices changed over COVID lockdown periods?"),
+  p(
+    "The price of Bitcoin, Dash, Ethereum, and Iota have fairly steadily
+    increased over the
+    pandemic. However, the price of each of these currencies all appear to
+    have increased
+    sharply between October 2020 and January 2021. One conjecture for this
+    sharp increase
+    is the hefty distribution of stimulus money throughout the US coupled
+    with the start
+    of re-employment. As people begin to get back on their feet and feel
+    more secure
+    financially, extra money provided by stimulus checks could very well
+    be being spent
+    on investment in the crypto market. Another possible explaination for
+    this behavior
+    is that throughout quarantine people have began to pay more attention
+    to financial
+    markets and, for lack of better terminology, financial market influencers,
+    such as
+    tech moguls like Elon Musk who promote investment in cryptocurrency. In
+    January,
+    Musk purchased $1.5 billion worth of Bitcoin and the price began to soar.
+    The data
+    clearly shows that the price of these currencies have been impacted
+    throughout the
+    duration of the pandemic. Would we have seen this behavior without the
+    pandemic?
+    It is impossible to say, however, the notion that more people have been
+    engaged due
+    to the continued lockdown remains a sound hypothesis for the hype
+    currently
+    sourrounding bitcoin and crypto currencies alike."
+  ),
+  h1("How do new releases of GPUs affect the price of crypto?"),
+  p(
+    "The data suggests that the release of new GPUs has impacted the price
+    of Bitcoin
+    either positively or negatively depending on which release date is under
+    consideration.
+    In May and June of 2016, there are points on the graph where a new release
+    of a GPU
+    is followed by a sharp increase in the price of GPU. This is entirely
+    feasible due to
+    how the price of Bitcoin increases. When a new GPU is released miners
+    are able to
+    mine more due to the increase in computing power associated with the
+    improvement from
+    the old GPUs to the new ones. This means that the rate at which they
+    are accruing fractions
+    of a coin is faster than before. If miners are obtaining more Bitcoin
+    more quickly, then
+    the amount of Bitcoin still available to mine diminishes and it becomes
+    harder to mine while
+    its price begins to increase due to higher demand and diminishing supply."
+  ),
+  p(
+    "Dash and Ethereum were initially included due to the prominence of
+    their current mining
+    networks. We originally thought that there would be a more significant
+    relationship between
+    the release of new GPUs and their prices, however this does not appear
+    to be the case.
+    It appears that between 2016 and 2017 the release of new GPUs had little
+    to no impact on
+    the price of Dash and Ethereum. Upon reflection, this is a limitation of
+    the time span
+    of the GPU data set. Ethereum and Dash were not as popular as Bitcoin
+    until more recently.
+    Nevertheless, this still provides some insight. The lack of relationship
+    between GPUs and
+    the price of Ethereum and Dash as recently as 2017 just reinforces how
+    quickly crypto has
+    gained recognition and wide spread popularity."
+  ),
+  h1("Which day of the week is the most crypto bought and sold?"),
+  p(
+    "Bitcoin is, on average, traded the most frequently on Thursdays, whereas
+    Ethereum is traded
+    most frequently on Mondays. These values do not confirm our suspision that
+    crypto would be
+    traded the most on weekends. At first this outcome was rather surprising,
+    however, our
+    analysis confirms that all cryptos, especially Bitcoin and Ethereum, are
+    very volatile.
+    In the financial world, stocks that are considered volatile are often
+    traded more
+    frequently to increase the potential profits. They are sold high one day and
+    bought low
+    the next to acquire more shares that will eventually increase in total
+    value. The
+    data indicates that the amount of both Bitcoin and Ethereum traded,
+    respectively, does not
+    vary much from day to day. This could very well be a representation of the
+    high volatility
+    associated with the price of each of these currencies. People are constantly
+    trading each
+    day to increase their future returns from their current investments."
+  )
 )
 
-ui <- navbarPage("Cryptocurrency Analysis",
-                 intro_panel,
-                 page_one,
-                 gpu_page,
-                 page_three,
-                 summary
-                 )
-
-
+ui <- navbarPage(
+  "Cryptocurrency Analysis",
+  intro_panel,
+  page_one,
+  gpu_page,
+  page_three,
+  summary
+)
