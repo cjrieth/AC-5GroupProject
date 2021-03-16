@@ -168,7 +168,7 @@ server <- function(input, output) {
       marker = list(color = bar_color), type = "bar"
     )
     barplot_pg3 <- barplot_pg3 %>% layout(
-      title = paste0("Average ", ifelse(input$btc_or_eth == "btcbar", "Bitcoin", "Ethereum"), " Trading by Day of the Week in 2018"),
+      title = paste0("Average ", ifelse(input$btc_or_eth == "btcbar", "Bitcoin", "Ethereum"), " Trading by Day of the Week from 2018"),
       yaxis = list(title = "Number of Shares Traded"),
       xaxis = xform
     )
