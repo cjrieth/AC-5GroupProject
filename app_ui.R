@@ -226,7 +226,7 @@ page_three <- tabPanel(
         outputId = "weekday"
       ),
       p("This chart shows the average number of crypto shares that are traded
-          on each days of the week in 2018. The user can choose between Bitcoin
+          on each days of the week from 2018 to early 2021. The user can choose between Bitcoin
           and Ethereum and see a comparison of shares being traded on each day
           of the week.") %>% tagAppendAttributes(class = "content")
     )
