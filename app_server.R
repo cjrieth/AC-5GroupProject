@@ -1,9 +1,6 @@
 # Server 
-library(ggplot2)
-library(dplyr)
-library(lintr)
-library(shiny)
-library(stringr)
+
+# Load in and organize data 
 bitcoin <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD.csv", na.strings = c("null"))
 dash <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/DASH-USD.csv", na.strings = c("null"))
 ethereum <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/ETH-USD3YR.csv", na.strings = c("null"))
@@ -71,6 +68,7 @@ server <- function(input, output) {
            x = "Date", y = ifelse(input$choose_data == "Volume", "Volume", "Price"))
     done
   })
+  
   output$gpu <- renderPlotly({
     gpus <- read.csv("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv", na.strings = c(""))
     btc <- read.csv(paste0("https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/", switch(input$gpu_crypto, "Bitcoin" = "BTC-USD-5Y.csv", "Ethereum" = "ETH-USD-MAX.csv", "Dash" = "DASH-USD-MAX.csv")), na.strings = c("null"))
@@ -126,6 +124,7 @@ server <- function(input, output) {
     converted <- ggplotly(gpu_btc_plot, tooltip = "text")
     converted
   })
+  
   output$weekday <- renderPlotly({
     source("SecondChart.R")
     xform <- list(categoryorder = "array",

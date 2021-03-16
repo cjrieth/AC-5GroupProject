@@ -1,10 +1,5 @@
 # User interface 
-library(dplyr)
-library(lintr)
-library(shiny)
-library(ggplot2)
-library(plotly)
-source("app_server.R")
+
 # Introduction page 
 intro_panel <- tabPanel(
   "Purpose",
@@ -30,26 +25,100 @@ intro_panel <- tabPanel(
     that has become very popular over a rather short period of time.
     It relies on the participation of users in the blockchain network.
     These users, or rather their computers, solve complicated mathematical
-    algorithms in order to validate blocks to acquire some share of a crypto
+    algorithms in order to validate blocks to acquire a fraction of a crypto
     coin. Due to the security provided by validating transactions and using
     a sequential blockchain, this quickly evolving type of currency could
-    guide financial markets in the future. Originally cryptocurrency, namely
-    Bitcoin, was heavily used in black market transactions due to the difficulty
-    of tracing it back to an individual user. It is intriguing that it was 
-    started by computer scientists and was quickly manipulated by black market
-    actors. There is also a huge influx of younger people between the ages of 16
-    and 25 that are investing their money in cryptocurrency. This has helped
+    guide financial markets in the future. Thus it is becoming increasingly more 
+    important to analyze and understand the behvior of cryptocurrencies. Originally 
+    cryptocurrency, namely Bitcoin, was heavily used in black market transactions 
+    due to the difficulty of tracing it back to an individual user. It is intriguing
+    that it was started by computer scientists and was quickly manipulated by black 
+    market actors. There is also a huge influx of younger people between the ages of
+    16 and 25 that are investing their money in cryptocurrency. This has helped
     fuel Bitcoin and spark the creation of so many other cryptocurrencies.
     Recently the sharp rise in the price of Bitcoin has only furthered the
-    intrigue surrounding crypto, however many still believe tt has not reached
-    its full potential yet. Analyzing past trends and external factors may
-    allow us to predict the behavior of crypto. Moreover, the price of
-    cryptocurrencies is linked to the price of computer hardware such as
-    graphical processing units so anlaysis may also help to deduce the impact
-    of new hardware on the price of crypto."
+    intrigue surrounding crypto, however many still believe it has not reached
+    its full potential yet."
+  ),
+  h1("Aims of Exploration"),
+  tags$p(
+    "Analyzing past trends and external factors that impact the behavior of crypto
+    currency may allow us to better predict the performance and prominence of crypto
+    in the future. This exploratory prjoect aims to answer three major questions."
+    ),
+  tags$ol(
+    tags$li(strong("How have crypto prices changed over COVID lockdown periods?")),
+    tags$li(strong("How do new releases of GPUs and CPUs affect the price of crypto?")),
+    tags$li(strong("Which day of the week is the most crypto bought and sold?"))
+  ),
+  p(
+   "The hype surrounding cryptocurrencies has increased rather dramatically in the midst
+   of the COVID pandemic. More people are stuck at home with more free time to spend on
+   activities that can be done in isolation, such as taking an interest in the financial
+   market and trading stock. Thus we thought it would be interesting to track the prices
+   of four different crypto currencies since the start of the pandemic in an attempt to
+   answer the first question. Moreover, it is a known fact that the price of cryptocurrencies
+   is linked to the price of computer hardware such as graphical processing units so anlaysis
+   between their respective prices may help to deduce the impact of new hardware on the price
+   of crypto. Lastly, we wanted to gain some insight into the behavior of the people 
+   participating in the cryptocurency market. As previously mentioned there has been a 
+   large surge in the number of young adults participating in crypto investment and trading.
+   One could hypothesize that, because of this, crypto is traded more frequently on the
+   weekends as a more whimsical activity."
+    ),
+  h1("Relevant Data Sets"),
+  p(
+    "This project draws on six different data sets. Five of the data sets represent
+    financial information and are thus similar in nature. The other data set consists
+    of various information associated with different models of graphical processing units.
+    To gain a better understanding and appreciation of each data set we found summary values
+    that are of interest to us as creators. The data sets are breifly described below."
+    ),
+  p(
+    a("Bitcoin Prices (Yahoo Finance)",
+    href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv"),
+    "has 7 features with the following names: Date, Open, Price, Low, Close, Adj.Close,
+    Volume. It also has 367 individual observations. This data tells us that the price of Bitcoin
+    started at $9,521.7 on January 31, 2020."
+    ),
+  p(
+    a("Bitcoin Prices (Kaggle)",
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv"),
+    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
+    It also has 1760 individual observations. The data tells us that the price of Bitcoin started at $136.0 on 
+    pril 28, 2013."
+    ),
+  p(
+    a("Ethereum Prices",
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv"),
+    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
+    It also has 929 individual observations. The data tells us that the price of Ethereum started at $3.5 on
+    August 07, 2015."
+    ),
+  p(
+    a("Dash Prices",
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"),
+    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
+    It also has 1468 individual observations. The data tells us that the price of Dash started at $0.4 on
+    February 14, 2014."
+    ),
+  p(
+    a("Iota Prices",
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"),
+    "has 7 features with the following names: Date, Open, Price, Low, Close, Volume, Market.Cap.
+    It also has 253 individual observations. The data tells us that the price of Iota started at $0.7 on June
+    13, 2017"
+    ),
+  p(
+    a("GPU Releases",
+      href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv"),
+    "contains information outside the scope of this report. It has 34 features and 3406 individual
+    observations. Information we found pertinent is as follows. The highest price of a GPU unpon its release date
+    was for the model Fermi GF100 (x2) , released at a price of $14,999.0 on July 25, 2011."
   )
 )
 
+# GPU and crypto prices page 
 gpu_page <- tabPanel(
     "GPU Releases and Crypto Price",
     sidebarLayout(
@@ -62,11 +131,14 @@ gpu_page <- tabPanel(
       ),
       mainPanel(
         plotlyOutput(outputId = "gpu"),
-        p("This chart is meant to explore how new releases of Graphical Processing Units, or GPUs, might affect the price of a cryptocurrency. Hover over the points on the graph to see which GPU was released on that day.")
+        p("This chart is meant to explore how new releases of Graphical Processing
+          Units, or GPUs, might affect the price of a cryptocurrency. Hover over
+          the points on the graph to see which GPU was released on that day.")
       )
     )
 )
 
+# Crypto during the pandemic page 
 page_one <- tabPanel(
   "Cryptocurrency Prices During the Pandemic", sidebarLayout(
     sidebarPanel(
@@ -83,11 +155,12 @@ page_one <- tabPanel(
         the prices have changed due to quarantining."),
     )))
 
+# Widget for trading by day 
 btc_or_eth <- selectInput(inputId = "btc_or_eth",
                           label = h3("Choose a Cryptocurrency"),
                           choices = c("Bitcoin" = "btcbar", "Ethereum" = "ethbar"))  
 
-
+# Trading by day of the week page 
 page_three <- tabPanel(
   "Trading by Day", sidebarLayout(
     sidebarPanel(
@@ -96,7 +169,10 @@ page_three <- tabPanel(
     mainPanel(
       plotlyOutput(
         outputId = "weekday"),
-        p("This chart shows the average number of crypto shares that are traded on each days of the week in 2018. The user can choose between Bitcoin and Ethereum and see a comparison of shares being traded on each day of the week.")
+        p("This chart shows the average number of crypto shares that are traded
+          on each days of the week in 2018. The user can choose between Bitcoin
+          and Ethereum and see a comparison of shares being traded on each day
+          of the week.")
     )
   )
 )
