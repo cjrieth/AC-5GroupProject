@@ -12,14 +12,13 @@ intro_panel <- tabPanel(
       .shiny-input-container {
         color: #474747;
       }
-      p {
-        background-color: white;  
-      }
-      h1{
-        background-color: white;  
+      .content{
+        background-color: white;
+        margin-bottom: 0px;
+        padding-left: 10px;
       }"))
   ),
-  h1("Cryptocurrency:", em("What"), " is it and ", em("Why"), " it matters?"),
+  h1("Cryptocurrency:", em("What"), " is it and ", em("Why"), " does it matter?") %>% tagAppendAttributes(class = "content"),
   p(
     "Cryptocurrency is a decentralized, virtual medium of exchange
     that has become very popular over a rather short period of time.
@@ -39,14 +38,14 @@ intro_panel <- tabPanel(
     many other cryptocurrencies. Recently the sharp rise in the price of Bitcoin
     has only furthered the intrigue surrounding crypto, however many still
     believe it has not reached its full potential yet."
-  ),
-  h1("Aims of Exploration"),
+  ) %>% tagAppendAttributes(class = "content"),
+  h1("Aims of Exploration") %>% tagAppendAttributes(class = "content"),
   tags$p(
     "Analyzing past trends and external factors that impact the
     behavior of crypto currency may allow us to better predict the
     performance and prominence of crypto in the future. This exploratory
     prjoect aims to answer three major questions."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   tags$ol(
     tags$li(
       strong("How have crypto prices changed over COVID lockdown periods?")
@@ -57,7 +56,7 @@ intro_panel <- tabPanel(
     tags$li(
       strong("Which day of the week is the most crypto bought and sold?")
       )
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     "The hype surrounding cryptocurrencies has increased rather
     dramatically in the midst of the COVID pandemic. More people
@@ -84,8 +83,8 @@ intro_panel <- tabPanel(
     trading. One could hypothesize that, because of this, crypto is
     traded more
     frequently on the weekends as a more whimsical activity."
-  ),
-  h1("Relevant Data Sets"),
+  ) %>% tagAppendAttributes(class = "content"),
+  h1("Relevant Data Sets") %>% tagAppendAttributes(class = "content"),
   p(
     "This project draws on six different data sets. Five of the data
     sets represent
@@ -98,7 +97,7 @@ intro_panel <- tabPanel(
     summary values that are of interest to us as creators.
     The data sets are breifly
     described below."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("Bitcoin Prices (Yahoo Finance)",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/BTC-USD-YAHOO.csv"
@@ -107,7 +106,7 @@ intro_panel <- tabPanel(
     Adj.Close, Volume. It also has 367 individual observations. This data tells
     us that the price
     of Bitcoin started at $9,521.7 on January 31, 2020."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("Bitcoin Prices (Kaggle)",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/bitcoin_price.csv"
@@ -117,7 +116,7 @@ intro_panel <- tabPanel(
     Market.Cap. It also has 1760 individual observations.
     The data tells us that the
     price of Bitcoin started at $136.0 on April 28, 2013."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("Ethereum Prices",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/ethereum_price.csv"
@@ -127,7 +126,7 @@ intro_panel <- tabPanel(
     Market.Cap. It also has 929 individual observations. The data
     tells us that the
     price of Ethereum started at $3.5 on August 07, 2015."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("Dash Prices",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"
@@ -137,7 +136,7 @@ intro_panel <- tabPanel(
     Market.Cap. It also has 1468 individual observations. The data
     tells us that the
     price of Dash started at $0.4 on February 14, 2014."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("Iota Prices",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/kaggle_crypto_data/iota_price.csv"
@@ -147,7 +146,7 @@ intro_panel <- tabPanel(
     Market.Cap. It also has 253 individual observations. The data tells
     us that the
     price of Iota started at $0.7 on June 13, 2017"
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     a("GPU Releases",
       href = "https://raw.githubusercontent.com/cjrieth/AC-5GroupProject/main/data/gpu-cpu-history-kaggle/All_GPUs.csv"
@@ -159,7 +158,7 @@ intro_panel <- tabPanel(
     price of a GPU unpon its release date was for the model Fermi
     GF100 (x2) , released
     at a price of $14,999.0 on July 25, 2011."
-  )
+  ) %>% tagAppendAttributes(class = "content")
 )
 
 # GPU and crypto prices page
@@ -178,7 +177,7 @@ gpu_page <- tabPanel(
       p("This chart is meant to explore how new releases of Graphical Processing
           Units, or GPUs, might affect the price of a cryptocurrency. Hover over
           the points on the graph to see which GPU was released on that day.")
-    )
+    ) %>% tagAppendAttributes(class = "content")
   )
 )
 
@@ -204,7 +203,7 @@ page_one <- tabPanel(
         low, open,
         close, and volume prices differ over this past year during the
         pandemic and how
-        the prices have changed due to quarantining."),
+        the prices have changed due to quarantining.") %>% tagAppendAttributes(class = "content")
     )
   )
 )
@@ -229,7 +228,7 @@ page_three <- tabPanel(
       p("This chart shows the average number of crypto shares that are traded
           on each days of the week in 2018. The user can choose between Bitcoin
           and Ethereum and see a comparison of shares being traded on each day
-          of the week.")
+          of the week.") %>% tagAppendAttributes(class = "content")
     )
   )
 )
@@ -237,7 +236,7 @@ page_three <- tabPanel(
 # Conclusions and summary page
 summary <- tabPanel(
   "Conclusions",
-  h1("How have crypto prices changed over COVID lockdown periods?"),
+  h1("How have crypto prices changed over COVID lockdown periods?") %>% tagAppendAttributes(class = "content"),
   p(
     "The price of Bitcoin, Dash, Ethereum, and Iota have fairly steadily
     increased over the
@@ -270,8 +269,8 @@ summary <- tabPanel(
     to the continued lockdown remains a sound hypothesis for the hype
     currently
     sourrounding bitcoin and crypto currencies alike."
-  ),
-  h1("How do new releases of GPUs affect the price of crypto?"),
+  ) %>% tagAppendAttributes(class = "content"),
+  h1("How do new releases of GPUs affect the price of crypto?") %>% tagAppendAttributes(class = "content"),
   p(
     "The data suggests that the release of new GPUs has impacted the price
     of Bitcoin
@@ -292,7 +291,7 @@ summary <- tabPanel(
     the amount of Bitcoin still available to mine diminishes and it becomes
     harder to mine while
     its price begins to increase due to higher demand and diminishing supply."
-  ),
+  ) %>% tagAppendAttributes(class = "content"),
   p(
     "Dash and Ethereum were initially included due to the prominence of
     their current mining
@@ -311,8 +310,8 @@ summary <- tabPanel(
     the price of Ethereum and Dash as recently as 2017 just reinforces how
     quickly crypto has
     gained recognition and wide spread popularity."
-  ),
-  h1("Which day of the week is the most crypto bought and sold?"),
+  ) %>% tagAppendAttributes(class = "content"),
+  h1("Which day of the week is the most crypto bought and sold?") %>% tagAppendAttributes(class = "content"),
   p(
     "Bitcoin is, on average, traded the most frequently on Thursdays, whereas
     Ethereum is traded
@@ -335,7 +334,7 @@ summary <- tabPanel(
     associated with the price of each of these currencies. People are constantly
     trading each
     day to increase their future returns from their current investments."
-  )
+  ) %>% tagAppendAttributes(class = "content")
 )
 
 ui <- navbarPage(
